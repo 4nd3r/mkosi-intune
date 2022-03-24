@@ -23,6 +23,8 @@ Works for me on Debian Sid (on top of `dm-crypt` and LUKS) as of 2022-03-24. YMM
 3. Run `intune-portal` and follow the instructions.
 4. Run `microsoft-edge` and be brave.
 
-## Troubleshooting
+## TODO
 
-TODO
+1. Troubleshooting instructions?
+2. Install `libpam-pwquality` to host and bind it from there?
+3. Templates and `Makefile`?
