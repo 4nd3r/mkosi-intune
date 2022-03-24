@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-HOSTNAME='jammy-intune'
+HOSTNAME='intune-test-jammy'
 
 echo "$HOSTNAME" > /etc/hostname
 
