@@ -1,4 +1,4 @@
-# Intune for Linux
+# Intune for Linux inside systemd-nspawn
 
 Works for me on Debian Sid (on top of `dm-crypt` and LUKS) as of 2022-03-24. YMMV.
 
