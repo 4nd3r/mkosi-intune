@@ -26,5 +26,5 @@ Works for me on Debian Sid (on top of `dm-crypt` and LUKS) as of 2022-03-24. YMM
 ## TODO
 
 1. Troubleshooting instructions?
-2. Install `libpam-pwquality` to host and bind it from there?
+2. Install `libpam-pwquality` to host and bind `/etc/pam.d/common-password` from host?
 3. Templates and `Makefile`?
