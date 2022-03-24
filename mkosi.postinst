@@ -8,7 +8,8 @@ HOME='/home/user'
 ROOT_SSH_KEYS='/root/.ssh/authorized_keys'
 USER_SSH_DIR="$HOME/.ssh"
 USER_KEYRINGS_DIR="$HOME/.local/share/keyrings"
-USER_KEYRING="$USER_KEYRINGS_DIR/Login.keyring"
+USER_KEYRING_NAME='Login'
+USER_KEYRING="$USER_KEYRINGS_DIR/$USER_KEYRING_NAME.keyring"
 
 useradd \
     --uid "$UID" \
@@ -33,11 +34,14 @@ then
 fi
 
 mkdir -p "$USER_KEYRINGS_DIR"
-echo 'Login' > "$USER_KEYRINGS_DIR/default"
+
+echo "$USER_KEYRING_NAME" > "$USER_KEYRINGS_DIR/default"
+
 cat > "$USER_KEYRING" << EOF
 [keyring]
-display-name=Login
+display-name=$USER_KEYRING_NAME
 EOF
+
 chmod 600 "$USER_KEYRING"
 
 chown -R "$UID:$GID" "$HOME"

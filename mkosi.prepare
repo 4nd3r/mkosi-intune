@@ -29,6 +29,7 @@ apt-get update
 apt-get --yes upgrade
 
 apt-get --yes --no-install-recommends install \
+    lsb-release \
     pulseaudio \
     microsoft-edge-dev \
     intune-portal

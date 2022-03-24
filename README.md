@@ -10,7 +10,8 @@ WARNING: This might not be compliant way of doing things.
 2. `systemd` (>= 2??)
 3. `systemd-container`
 4. `debootstrap`
-5. `mkosi` (`sudo pip3 install git+https://github.com/systemd/mkosi.git` or see [here](https://github.com/systemd/mkosi))
+5. `zstd`
+6. `mkosi` (`sudo pip3 install git+https://github.com/systemd/mkosi.git` or see [here](https://github.com/systemd/mkosi))
 
 ## Configure
 
