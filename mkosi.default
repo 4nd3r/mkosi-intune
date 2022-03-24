@@ -1,0 +1,16 @@
+[Distribution]
+Distribution=ubuntu
+Release=focal
+
+[Content]
+Packages=ca-certificates,man-db,sudo
+Password=hello
+WithDocs=yes
+
+[Partitions]
+RootSize=10G
+
+#[Host]
+#Ssh=yes
+#SshPort=222
+#SshKey=/home/user/.ssh/id_rsa

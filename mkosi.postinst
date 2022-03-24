@@ -1,0 +1,38 @@
+#!/bin/sh -e
+
+UID=1000
+GID='users'
+HOME='/home/user'
+USER='user'
+
+useradd \
+    --uid "$UID" \
+    --gid "$GID" \
+    --groups sudo \
+    --create-home \
+    --home-dir "$HOME" \
+    --password "$( awk -F: '/^root:/ {print $2}' /etc/shadow )" \
+    --shell /bin/bash \
+    "$USER"
+
+cat >> "$HOME/.bashrc" << EOF
+export DISPLAY=:0
+export PULSE_SERVER=unix:/run/host_pulse_server
+systemctl --user import-environment DISPLAY PULSE_SERVER
+EOF
+
+KEYRINGS="$HOME/.local/share/keyrings"
+KEYRING="$KEYRINGS/Login.keyring"
+
+mkdir -p "$KEYRINGS"
+
+echo 'Login' > "$KEYRINGS/default"
+
+cat > "$KEYRING" << EOF
+[keyring]
+display-name=Login
+EOF
+
+chmod 600 "$KEYRING"
+
+chown -R "$UID:$GID" "$HOME"
