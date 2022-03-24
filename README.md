@@ -12,17 +12,27 @@ Works for me on Debian Sid (on top of `dm-crypt` and LUKS) as of 2022-03-24. YMM
 
 ## Configure
 
-1. In `mkosi.default` modify `Password=` and `[Host]` section (optional).
-2. In `mkosi.prepare` modify `HOSTNAME=` (optional).
-3. In `mkosi.postinst` modify `UID=`, `GID=`, `HOME=` and `USER=` (**required**).
+1. In `mkosi.default` modify/(un)comment `Password=` and/or `[Host]` section.
+2. In `mkosi.prepare` modify `HOSTNAME=`.
+3. In `mkosi.postinst` modify `UID=`, `GID=`, `USER=` and `HOME=`.
 4. `mkosi.nspawn` will probably work as is (you can add your own binds here, e.g. `$HOME/Desktop`).
 
 ## Usage
 
 1. Run `sudo mkosi boot` (in repository root) and wait (use `mkosi -f` to "reset" the image).
-2. Log in with your `$USER`.
+2. Log in with your `$USER` (using password on console or over SSH).
 3. Run `intune-portal` and follow the instructions.
 4. Run `microsoft-edge` and be brave.
+
+## Notes
+
+After you have working image, you can:
+```
+mkdir ~/.intune
+mv mkosi.output/* ~/.intune/
+cd ~/.intune/
+sudo systemd-nspawn --settings=trusted -bi image.raw
+```
 
 ## TODO
 

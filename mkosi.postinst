@@ -2,8 +2,13 @@
 
 UID=1000
 GID='users'
-HOME='/home/user'
 USER='user'
+HOME='/home/user'
+
+ROOT_SSH_KEYS='/root/.ssh/authorized_keys'
+USER_SSH_DIR="$HOME/.ssh"
+USER_KEYRINGS_DIR="$HOME/.local/share/keyrings"
+USER_KEYRING="$USER_KEYRINGS_DIR/Login.keyring"
 
 useradd \
     --uid "$UID" \
@@ -21,18 +26,18 @@ export PULSE_SERVER=unix:/run/host_pulse_server
 systemctl --user import-environment DISPLAY PULSE_SERVER
 EOF
 
-KEYRINGS="$HOME/.local/share/keyrings"
-KEYRING="$KEYRINGS/Login.keyring"
+if [ -f "$ROOT_SSH_KEYS" ]
+then
+    mkdir -p "$USER_SSH_DIR"
+    cp "$ROOT_SSH_KEYS" "$USER_SSH_DIR/"
+fi
 
-mkdir -p "$KEYRINGS"
-
-echo 'Login' > "$KEYRINGS/default"
-
-cat > "$KEYRING" << EOF
+mkdir -p "$USER_KEYRINGS_DIR"
+echo 'Login' > "$USER_KEYRINGS_DIR/default"
+cat > "$USER_KEYRING" << EOF
 [keyring]
 display-name=Login
 EOF
-
-chmod 600 "$KEYRING"
+chmod 600 "$USER_KEYRING"
 
 chown -R "$UID:$GID" "$HOME"
