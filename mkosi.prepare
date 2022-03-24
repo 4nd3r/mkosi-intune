@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-HOSTNAME='focal-intune'
+HOSTNAME='jammy-intune'
 
 echo "$HOSTNAME" > /etc/hostname
 
@@ -9,13 +9,20 @@ echo "127.0.0.1 $HOSTNAME localhost" > /etc/hosts
 sed -i 's/^%sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
 cat > /etc/apt/sources.list << EOF
-deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu focal-updates main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu focal-backports main restricted universe multiverse
-deb http://security.ubuntu.com/ubuntu focal-security main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu jammy-security main restricted universe multiverse
 EOF
 
 export DEBIAN_FRONTEND='noninteractive'
+
+libsdbuscdeb='/tmp/libsdbusc.deb'
+
+curl -sS -o "$libsdbuscdeb" \
+    'http://archive.ubuntu.com/ubuntu/pool/universe/s/sdbus-cpp/libsdbus-c++0_0.8.3-4_amd64.deb'
+
+dpkg -i "$libsdbuscdeb"
 
 apt-get update
 

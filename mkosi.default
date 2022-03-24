@@ -1,9 +1,9 @@
 [Distribution]
 Distribution=ubuntu
-Release=focal
+Release=jammy
 
 [Content]
-Packages=ca-certificates,man-db,sudo
+Packages=ca-certificates,curl,man-db,sudo
 Password=hello
 WithDocs=yes
 
