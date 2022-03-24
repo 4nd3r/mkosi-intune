@@ -34,7 +34,7 @@ After you have working image, you can:
 mkdir ~/.corphost
 mv mkosi.output/* ~/.corphost/
 cd ~/.corphost
-sudo systemd-nspawn --settings=trusted -bi image.raw
+sudo systemd-nspawn --machine=corphost --image=image.raw --settings=trusted --boot
 ```
 
 ## TODO
