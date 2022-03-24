@@ -29,10 +29,20 @@ apt-get update
 apt-get --yes upgrade
 
 apt-get --yes --no-install-recommends install \
+    intune-portal \
+    libpam-gnome-keyring \
     lsb-release \
-    pulseaudio \
     microsoft-edge-dev \
-    intune-portal
+    pulseaudio
 
 sed -i 's/.*pam_pwquality.*/password requisite pam_pwquality.so retry=3 minlen=12 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1/' \
     /etc/pam.d/common-password
+
+echo 'password optional pam_gnome_keyring.so' \
+    >> /etc/pam.d/common-password
+
+echo 'auth optional pam_gnome_keyring.so' \
+    >> /etc/pam.d/common-auth
+
+echo 'session optional pam_gnome_keyring.so auto_start' \
+    >> /etc/pam.d/common-session
