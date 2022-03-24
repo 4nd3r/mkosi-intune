@@ -36,9 +36,3 @@ mv mkosi.output/* ~/.corphost/
 cd ~/.corphost
 sudo systemd-nspawn --machine=corphost --image=image.raw --settings=trusted --boot
 ```
-
-## TODO
-
-1. Troubleshooting instructions?
-2. Install `libpam-pwquality` to host and bind `/etc/pam.d/common-password` from host?
-3. Templates and `Makefile`?
