@@ -4,10 +4,11 @@ Works for me on Debian Sid (on top of `dm-crypt` and LUKS) as of 2022-03-24. YMM
 
 ## Dependencies
 
-1. `systemd` (>= 2??)
-2. `systemd-container`
-3. `debootstrap`
-4. `mkosi` (`sudo pip3 install git+https://github.com/systemd/mkosi.git` or see [here](https://github.com/systemd/mkosi))
+1. `xserver-xorg-core`
+2. `systemd` (>= 2??)
+3. `systemd-container`
+4. `debootstrap`
+5. `mkosi` (`sudo pip3 install git+https://github.com/systemd/mkosi.git` or see [here](https://github.com/systemd/mkosi))
 
 ## Configure
 
