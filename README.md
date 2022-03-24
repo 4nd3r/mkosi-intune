@@ -23,7 +23,7 @@ WARNING: This might not be compliant way of doing things.
 ## Usage
 
 1. Run `sudo mkosi boot` (in repository root) and wait (use `mkosi -f` to "reset" the image).
-2. Log in with `$USER` and password.
+2. Log in with `$USER` and password (**required for keyring**).
 3. Run `intune-portal` and follow the instructions.
 4. Run `microsoft-edge` and be brave.
 
