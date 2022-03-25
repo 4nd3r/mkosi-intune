@@ -32,7 +32,8 @@ WARNING: This might not be compliant way of doing things.
 After you have working image, you can:
 ```
 mkdir ~/.corphost
-mv mkosi.output/* ~/.corphost/
+mv mkosi.output/image.nspawn ~/.corphost/corphost.nspawn
+mv mkosi.output/image.raw ~/.corphost/corphost.raw
 cd ~/.corphost
-sudo systemd-nspawn --machine=corphost --image=image.raw --settings=trusted --boot
+sudo systemd-nspawn --image=corphost.raw --settings=trusted
 ```
