@@ -1,4 +1,4 @@
-# Intune for Linux with systemd-nspawn
+# Intune for Linux feat. systemd-nspawn
 
 Works for me on Debian Sid as of 2022-03-24. YMMV.
 
