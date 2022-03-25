@@ -5,4 +5,5 @@ BindReadOnly=/run/user/1000/pulse/native:/run/host_pulse_server
 BindReadOnly=/tmp/.X11-unix
 
 [Exec]
+Boot=yes
 Capability=all
