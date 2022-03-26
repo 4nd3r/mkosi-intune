@@ -27,7 +27,7 @@ WARNING: This might not be compliant way of doing things.
 3. Run `intune-portal` and follow the instructions.
 4. Run `microsoft-edge` and be brave.
 
-## Notes
+## Remarks
 
 After you have working image, you should move it to more stable location:
 ```

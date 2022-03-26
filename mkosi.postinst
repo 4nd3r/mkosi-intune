@@ -5,7 +5,7 @@
 UID=1000
 GID='users'
 USER='user'
-HOME='/home/user'
+HOME="/home/$USER"
 
 useradd \
     --uid "$UID" \
@@ -19,7 +19,7 @@ useradd \
 
 cat >> "$HOME/.bashrc" << EOF
 export DISPLAY=:0
-export PULSE_SERVER=unix:/run/host_pulse_server
+export PULSE_SERVER=unix:/run/host_pulse_native
 systemctl --user import-environment DISPLAY PULSE_SERVER
 EOF
 

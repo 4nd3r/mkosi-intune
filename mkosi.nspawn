@@ -1,7 +1,8 @@
 [Files]
 Bind=/dev/dri
+#Bind=/home/user/.corphost/home:/home
 BindReadOnly=/etc/resolv.conf
-BindReadOnly=/run/user/1000/pulse/native:/run/host_pulse_server
+BindReadOnly=/run/user/1000/pulse/native:/run/host_pulse_native
 BindReadOnly=/tmp/.X11-unix
 
 [Exec]

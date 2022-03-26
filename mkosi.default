@@ -3,12 +3,16 @@ Distribution=ubuntu
 Release=jammy
 
 [Content]
-Packages=ca-certificates,curl,man-db,sudo
+Packages=
+    ca-certificates
+    curl
+    man-db
+    sudo
 Password=hello
 WithDocs=yes
 
 [Partitions]
-RootSize=10G
+RootSize=5G
 
 #[Host]
 #Ssh=yes

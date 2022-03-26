@@ -3,12 +3,8 @@
 # .prepare has network and root password is not set yet.
 
 HOSTNAME='intune-test-jammy'
-
 echo "$HOSTNAME" > /etc/hostname
-
 echo "127.0.0.1 $HOSTNAME localhost" > /etc/hosts
-
-sed -i 's/^%sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD:ALL/' /etc/sudoers
 
 cat > /etc/apt/sources.list << EOF
 deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
@@ -20,14 +16,10 @@ EOF
 export DEBIAN_FRONTEND='noninteractive'
 
 libsdbuscdeb='/tmp/libsdbusc.deb'
-
-curl -sS -o "$libsdbuscdeb" \
-    'http://archive.ubuntu.com/ubuntu/pool/universe/s/sdbus-cpp/libsdbus-c++0_0.8.3-4_amd64.deb'
-
+curl -sS -o "$libsdbuscdeb" 'http://archive.ubuntu.com/ubuntu/pool/universe/s/sdbus-cpp/libsdbus-c++0_0.8.3-4_amd64.deb'
 dpkg -i "$libsdbuscdeb"
 
 apt-get update
-
 apt-get --yes upgrade
 
 apt-get --yes --no-install-recommends install \
