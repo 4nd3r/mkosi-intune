@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+# .prepare has network and root password is not set yet.
+
 HOSTNAME='intune-test-jammy'
 
 echo "$HOSTNAME" > /etc/hostname

@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+# .postinst has no network and root password is set.
+
 UID=1000
 GID='users'
 USER='user'
