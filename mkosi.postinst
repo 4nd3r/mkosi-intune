@@ -17,12 +17,6 @@ useradd \
     --shell /bin/bash \
     "$USER"
 
-cat >> "$HOME/.bashrc" << EOF
-export DISPLAY=:0
-export PULSE_SERVER=unix:/run/host_pulse_native
-systemctl --user import-environment DISPLAY PULSE_SERVER
-EOF
-
 if [ -f /root/.ssh/authorized_keys ]
 then
     mkdir "$HOME/.ssh"
