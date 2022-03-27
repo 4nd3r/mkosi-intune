@@ -3,12 +3,18 @@ Distribution=ubuntu
 Release=jammy
 
 [Content]
+Password=hello
+Environment=
+    INTUNE_HOSTNAME=intune-test-jammy
+    INTUNE_UID=1000
+    INTUNE_GID=users
+    INTUNE_USER=user
+    INTUNE_HOME=/home/user
 Packages=
     ca-certificates
     curl
     man-db
     sudo
-Password=hello
 WithDocs=yes
 
 [Partitions]

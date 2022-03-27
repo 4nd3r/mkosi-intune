@@ -2,25 +2,20 @@
 
 # .postinst has no network and root password is set.
 
-UID=1000
-GID='users'
-USER='user'
-HOME="/home/$USER"
-
 useradd \
-    --uid "$UID" \
-    --gid "$GID" \
+    --uid "$INTUNE_UID" \
+    --gid "$INTUNE_GID" \
     --groups sudo \
     --create-home \
-    --home-dir "$HOME" \
+    --home-dir "$INTUNE_HOME" \
     --password "$( awk -F: '/^root:/ {print $2}' /etc/shadow )" \
     --shell /bin/bash \
-    "$USER"
+    "$INTUNE_USER"
 
 if [ -f /root/.ssh/authorized_keys ]
 then
-    mkdir "$HOME/.ssh"
-    cp /root/.ssh/authorized_keys "$HOME/.ssh/"
+    mkdir "$INTUNE_HOME/.ssh"
+    cp /root/.ssh/authorized_keys "$INTUNE_HOME/.ssh/"
 fi
 
-chown -R "$UID:$GID" "$HOME"
+chown -R "$INTUNE_UID:$INTUNE_GID" "$INTUNE_HOME"

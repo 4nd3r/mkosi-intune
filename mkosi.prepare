@@ -2,9 +2,8 @@
 
 # .prepare has network and root password is not set yet.
 
-HOSTNAME='intune-test-jammy'
-echo "$HOSTNAME" > /etc/hostname
-echo "127.0.0.1 $HOSTNAME localhost" > /etc/hosts
+echo "$INTUNE_HOSTNAME" > /etc/hostname
+echo "127.0.0.1 $INTUNE_HOSTNAME localhost" > /etc/hosts
 
 cat > /etc/apt/sources.list << EOF
 deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
@@ -23,6 +22,7 @@ apt-get update
 apt-get --yes upgrade
 
 apt-get --yes --no-install-recommends install \
+    fonts-recommended \
     intune-portal \
     libpam-gnome-keyring \
     lsb-release \
