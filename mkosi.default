@@ -2,6 +2,9 @@
 Distribution=ubuntu
 Release=jammy
 
+[Output]
+Format=directory
+
 [Content]
 Password=hello
 Environment=
@@ -16,9 +19,6 @@ Packages=
     man-db
     sudo
 WithDocs=yes
-
-[Partitions]
-RootSize=5G
 
 #[Host]
 #Ssh=yes

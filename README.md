@@ -25,9 +25,9 @@ After you have working image, you should move it to more stable location:
 ```
 mkdir ~/.corphost
 mv mkosi.output/image.nspawn ~/.corphost/corphost.nspawn
-mv mkosi.output/image.raw ~/.corphost/corphost.raw
+sudo mv mkosi.output/image ~/.corphost/corphost
 cd ~/.corphost
-sudo systemd-nspawn --image=corphost.raw --settings=trusted
+sudo systemd-nspawn --directory=corphost --settings=trusted
 ```
 Name change is necessary to avoid name conflict with running containers while
 testing stuff in this repository. Container name will be derived from `--image=`
