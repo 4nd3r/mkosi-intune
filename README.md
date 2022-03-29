@@ -30,12 +30,13 @@ cd ~/.corphost
 sudo systemd-nspawn --directory=corphost --settings=trusted
 ```
 Name change is necessary to avoid name conflict with running containers while
-testing stuff in this repository. Container name will be derived from `--image=`
-value without extension and `.nspawn` file with same name will used automatically.
+testing stuff in this repository. Container name will be derived from `--directory=`
+value and `.nspawn` file with same name will used automatically.
 
 ## Troubleshooting
 
-Sometimes `gnome-keyring-daemon` doesn't start correctly and it's not possible sign in to Intune.
-To verify check if `~/.local/share/keyrings/` contains  files `login.keyring` and `user.keystore`.
-These files must be created automatically by `gnome-keyring-daemon` when `intune-portal` starts.
-Logging out and in again should help...
+Due to unknown reasons sometimes `gnome-keyring-daemon` doesn't start correctly and
+it's not possible sign in to Intune. To verify check if `~/.local/share/keyrings/`
+contains  files `login.keyring` and `user.keystore`. These files must be created
+automatically by `gnome-keyring-daemon` when you start signing in to `intune-portal`.
+Logging out of container and back in should help... YMMV.
