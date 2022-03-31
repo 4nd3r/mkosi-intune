@@ -5,13 +5,6 @@
 echo "$INTUNE_HOSTNAME" > /etc/hostname
 echo "127.0.0.1 $INTUNE_HOSTNAME localhost" > /etc/hosts
 
-cat > /etc/apt/sources.list << EOF
-deb http://archive.ubuntu.com/ubuntu jammy main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu jammy-updates main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu jammy-backports main restricted universe multiverse
-deb http://security.ubuntu.com/ubuntu jammy-security main restricted universe multiverse
-EOF
-
 export DEBIAN_FRONTEND='noninteractive'
 
 libsdbuscdeb='/tmp/libsdbusc.deb'
@@ -22,12 +15,8 @@ apt-get update
 apt-get --yes upgrade
 
 apt-get --yes --no-install-recommends install \
-    fonts-recommended \
     intune-portal \
-    libpam-gnome-keyring \
-    lsb-release \
     microsoft-edge-dev \
-    pulseaudio
 
 sed -i 's/.*pam_pwquality.*/password requisite pam_pwquality.so retry=3 minlen=12 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1/' \
     /etc/pam.d/common-password

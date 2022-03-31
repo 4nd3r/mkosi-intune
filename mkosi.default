@@ -1,6 +1,7 @@
 [Distribution]
 Distribution=ubuntu
 Release=jammy
+Repositories=main,restricted,universe,multiverse
 
 [Output]
 Format=directory
@@ -16,7 +17,11 @@ Environment=
 Packages=
     ca-certificates
     curl
+    fonts-recommended
+    libpam-gnome-keyring
+    lsb-release
     man-db
+    pulseaudio
     sudo
 WithDocs=yes
 
