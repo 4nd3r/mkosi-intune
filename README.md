@@ -23,15 +23,11 @@ WARNING: This might not be compliant way of doing things.
 
 After you have working image, you should move it to more stable location:
 ```
-mkdir ~/.corphost
-mv mkosi.output/image.nspawn ~/.corphost/corphost.nspawn
-sudo mv mkosi.output/image ~/.corphost/corphost
-cd ~/.corphost
-sudo systemd-nspawn --directory=corphost --settings=trusted
+sudo mkdir /etc/systemd/nspawn /var/lib/machines
+sudo mv mkosi.output/image.nspawn /etc/systemd/nspawn/corphost.nspawn
+sudo mv mkosi.output/image /var/lib/machines/corphost
+sudo systemd-nspawn -M corphost
 ```
-Name change is necessary to avoid name conflict with running containers while
-testing stuff in this repository. Container name will be derived from `--directory=`
-value and `.nspawn` file with same name will used automatically.
 
 ## Troubleshooting
 
