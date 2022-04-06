@@ -31,8 +31,16 @@ sudo systemd-nspawn -M corphost
 
 ## Troubleshooting
 
+### Keyring
+
 Due to unknown reasons sometimes `gnome-keyring-daemon` doesn't start correctly and
 it's not possible sign in to Intune. To verify check if `~/.local/share/keyrings/`
 contains  files `login.keyring` and `user.keystore`. These files must be created
 automatically by `gnome-keyring-daemon` when you start signing in to `intune-portal`.
 Logging out of container and back in should help... YMMV.
+
+### Edge
+
+Before you open any corporate resources, always check first if Edge profile
+status is "*Sync is on*". Otherwise you will be greeted with login window.
+Close tab, take a breath and try again.
