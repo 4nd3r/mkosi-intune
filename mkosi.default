@@ -6,14 +6,17 @@ Repositories=main,restricted,universe,multiverse
 [Output]
 Format=directory
 
-[Content]
-Password=hello
-Environment=
+[Validation]
+Password=Hunter2
+
+BuildEnvironment=
     INTUNE_HOSTNAME=intune-test-jammy
     INTUNE_UID=1000
     INTUNE_GID=users
     INTUNE_USER=user
     INTUNE_HOME=/home/user
+
+[Packages]
 Packages=
     ca-certificates
     curl
