@@ -7,6 +7,10 @@ echo "127.0.0.1 $INTUNE_HOSTNAME localhost" > /etc/hosts
 
 export DEBIAN_FRONTEND='noninteractive'
 
+libssldeb='/tmp/libssl.deb'
+curl -sS -o "$libssldeb" 'http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb'
+dpkg -i "$libssldeb"
+
 libsdbuscdeb='/tmp/libsdbusc.deb'
 curl -sS -o "$libsdbuscdeb" 'http://archive.ubuntu.com/ubuntu/pool/universe/s/sdbus-cpp/libsdbus-c++0_0.8.3-4_amd64.deb'
 dpkg -i "$libsdbuscdeb"
