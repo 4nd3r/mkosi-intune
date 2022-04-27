@@ -1,6 +1,9 @@
 [Files]
 Bind=/dev/dri
+#Bind=/home/user/Desktop
+#Bind=/home/user/Downloads
 BindReadOnly=/etc/resolv.conf
+# Make sure you have same UID here.
 BindReadOnly=/run/user/1000/pulse/native:/run/host_pulse_native
 BindReadOnly=/tmp/.X11-unix
 

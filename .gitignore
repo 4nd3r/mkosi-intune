@@ -1,4 +1,8 @@
-mkosi.cache/*
-!mkosi.cache/.gitkeep
-mkosi.output/*
-!mkosi.output/.gitkeep
+mkosi/mkosi.default
+mkosi/mkosi.nspawn
+
+mkosi/mkosi.cache/*
+!mkosi/mkosi.cache/.gitkeep
+
+mkosi/mkosi.output/*
+!mkosi/mkosi.output/.gitkeep

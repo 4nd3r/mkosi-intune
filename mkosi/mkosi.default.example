@@ -7,7 +7,9 @@ Repositories=main,restricted,universe,multiverse
 Format=directory
 
 [Content]
+# Required for keyring.
 Password=hello
+# Modify to match your host environment (except hostname).
 Environment=
     INTUNE_HOSTNAME=intune-test-jammy
     INTUNE_UID=1000
@@ -25,6 +27,7 @@ Packages=
     sudo
 WithDocs=yes
 
+# Following is optional.
 #[Host]
 #Ssh=yes
 #SshPort=222
