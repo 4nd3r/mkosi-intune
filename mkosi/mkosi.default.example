@@ -17,6 +17,7 @@ Environment=
     INTUNE_USER=user
     INTUNE_HOME=/home/user
 Packages=
+    adwaita-icon-theme-full
     ca-certificates
     curl
     fonts-recommended
