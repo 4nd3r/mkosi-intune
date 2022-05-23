@@ -4,7 +4,7 @@ set -eux
 CORPHOST_PATH='/var/lib/machines/corphost'
 
 set --
-if [ stat /dev/video* ]; then  # Do we have at least 1 camera?
+if stat /dev/video*; then  # Do we have at least 1 camera?
 	for v in /dev/video*
 	do
 		set -- "$@" "--bind=$v"
