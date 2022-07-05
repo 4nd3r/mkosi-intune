@@ -8,7 +8,7 @@ echo "127.0.0.1 $INTUNE_HOSTNAME localhost" > /etc/hosts
 export DEBIAN_FRONTEND='noninteractive'
 
 libssldeb='/tmp/libssl.deb'
-curl -sS -o "$libssldeb" 'http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.3_amd64.deb'
+curl -sS -o "$libssldeb" 'http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.6_amd64.deb'
 dpkg -i "$libssldeb"
 
 libsdbuscdeb='/tmp/libsdbusc.deb'
