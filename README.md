@@ -46,7 +46,7 @@ If you restart your desktop environment, Edge will close and you will lose the s
 To get it back:
 
 ```
-sudo machinectl shell user@corphost /bin/bash -c 'DISPLAY=:0 microsoft-edge-dev'
+sudo machinectl shell user@corphost /bin/bash -c 'DISPLAY=:0 microsoft-edge'
 ```
 
 **NB** You must log in with a password after container boot. Just getting a
