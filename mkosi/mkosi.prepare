@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -ex
 
 # .prepare has network and root password is not set yet.
 
@@ -7,20 +7,24 @@ echo "127.0.0.1 $INTUNE_HOSTNAME localhost" > /etc/hosts
 
 export DEBIAN_FRONTEND='noninteractive'
 
-libssldeb='/tmp/libssl.deb'
-curl -sS -o "$libssldeb" 'http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.6_amd64.deb'
-dpkg -i "$libssldeb"
+# intune-portal depends on libssl1.1
+libssltmp='/tmp/libssl.deb'
+libsslurl="$( curl -sSL 'https://packages.ubuntu.com/focal/amd64/libssl1.1/download' | sed -nr 's/.+href="([^"]+\.deb)".+/\1/p' | head -1 )"
+curl -sSL -o "$libssltmp" "$libsslurl"
+dpkg -i "$libssltmp"
 
-libsdbuscdeb='/tmp/libsdbusc.deb'
-curl -sS -o "$libsdbuscdeb" 'http://archive.ubuntu.com/ubuntu/pool/universe/s/sdbus-cpp/libsdbus-c++0_0.8.3-4_amd64.deb'
-dpkg -i "$libsdbuscdeb"
+# msalsdk-dbusclient depends on libsdbus-c++0
+libsdbustmp='/tmp/libsdbus.deb'
+libsdbusurl="$( curl -sSL 'https://packages.ubuntu.com/focal-backports/amd64/libsdbus-c++0/download' | sed -nr 's/.+href="([^"]+\.deb)".+/\1/p' | head -1 )"
+curl -sSL -o "$libsdbustmp" "$libsdbusurl"
+dpkg -i "$libsdbustmp"
 
 apt-get update
 apt-get --yes upgrade
 
 apt-get --yes --no-install-recommends install \
     intune-portal \
-    microsoft-edge-dev \
+    microsoft-edge-stable
 
 sed -i 's/.*pam_pwquality.*/password requisite pam_pwquality.so retry=3 minlen=12 ucredit=-1 lcredit=-1 dcredit=-1 ocredit=-1/' \
     /etc/pam.d/common-password
