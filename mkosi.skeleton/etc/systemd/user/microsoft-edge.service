@@ -1,0 +1,11 @@
+[Unit]
+Description=microsoft-edge
+
+[Service]
+ExecStartPre=/usr/bin/sh /etc/profile.d/environment.sh
+ExecStart=/usr/bin/microsoft-edge
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

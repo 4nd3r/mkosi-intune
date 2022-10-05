@@ -1,6 +1,3 @@
-mkosi.default
-mkosi.nspawn
-
 mkosi.cache/*
 !mkosi.cache/.gitkeep
 

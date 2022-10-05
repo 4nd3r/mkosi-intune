@@ -7,19 +7,12 @@ Repositories=main,restricted,universe,multiverse
 Format=directory
 
 [Content]
-# Required for keyring.
 Password=hello
-# Modify to match your host environment (except hostname).
-Environment=
-    INTUNE_HOSTNAME=intune-test-jammy
-    INTUNE_UID=1000
-    INTUNE_GID=users
-    INTUNE_USER=user
-    INTUNE_HOME=/home/user
 Packages=
     adwaita-icon-theme-full
+    bash-completion
     ca-certificates
-    curl
+    cracklib-runtime
     fonts-recommended
     libpam-gnome-keyring
     lsb-release
@@ -27,9 +20,3 @@ Packages=
     pulseaudio
     sudo
 WithDocs=yes
-
-# Following is optional.
-#[Host]
-#Ssh=yes
-#SshPort=222
-#SshKey=/home/user/.ssh/id_rsa
