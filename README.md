@@ -54,13 +54,9 @@ and only then run `intune-portal`. Otherwise keyring initialization might fail.
 Additionally you **must** always login to the container (e.g. after system
 reboot) to unlock the keyring.
 
-On login `microsft-edge` user service starts. This way you don't have to keep
-terminal open. Service will automatically restart in 3 seconds if you quit Edge
-or it crashes (I might remove this behavior in the future).
-
-Before you take deep dive into corporate resources, first check if Edge profile
-status is "*Sync is on*". Otherwise you will be greeted with SSO login and/or
-recommendation to install Intune and register your device.
+Run `microsoft-edge` to take deep dive into corporate resources, but first
+check if Edge profile status is "*Sync is on*" or you will be greeted with SSO
+login and/or recommendation to install Intune and register your device.
 
 
 ## Networking
