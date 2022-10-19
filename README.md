@@ -39,7 +39,8 @@ $ make
 
 Running `make` without arguments will build Ubuntu 22.04 image with `mkosi`,
 install it to standard `systemd-nspawn` locations, enables container startup on
-boot (seems to be broken) and starts the container.
+boot (seems to be broken due to `/dev/dri` not always(?) available on early
+boot) and starts the container.
 
 
 ## Use
