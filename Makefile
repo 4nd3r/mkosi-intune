@@ -1,8 +1,8 @@
-.PHONY: make build clean install uninstall enable disable start login stop
+.PHONY: make build clean install uninstall
 
 HOSTNAME:=$(shell hostname | sed 's/^/corp/')
 
-make: build install enable start
+make: build install
 
 build:
 	sudo mkosi build
@@ -20,18 +20,3 @@ install:
 uninstall:
 	sudo rm -rf /etc/systemd/nspawn/${HOSTNAME}.nspawn /var/lib/machines/${HOSTNAME}
 	sudo rmdir --ignore-fail-on-non-empty /etc/systemd/nspawn /var/lib/machines
-
-enable:
-	sudo machinectl enable ${HOSTNAME}
-
-disable:
-	sudo machinectl disable ${HOSTNAME}
-
-start:
-	sudo machinectl start ${HOSTNAME}
-
-login:
-	sudo machinectl login ${HOSTNAME}
-
-stop:
-	sudo machinectl stop ${HOSTNAME}

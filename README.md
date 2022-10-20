@@ -37,17 +37,12 @@ $ cd mkosi-intune
 $ make
 ```
 
-Running `make` without arguments will build Ubuntu 22.04 image with `mkosi`,
-install it to standard `systemd-nspawn` locations, enables container startup on
-boot (seems to be broken due to `/dev/dri` not always(?) available on early
-boot) and starts the container.
-
 
 ## Use
 
 ```
-$ machinectl
-$ sudo machinectl login ...
+$ sudo machinectl start corp$HOSTNAME
+$ sudo machinectl login corp$HOSTNAME
 ```
 
 Initial password is `hello` and you **must** change it, restart the container
@@ -93,3 +88,14 @@ container's `.nspawn` file, but with this you might run into problems if you
 have more nspawn containers running.
 
 See [`man systemd.nspawn`](https://www.freedesktop.org/software/systemd/man/systemd.nspawn.html) for details.
+
+
+## Smartcard
+
+Close Edge and...
+
+```
+$ opensc-tool -l
+$ modutil -dbdir sql:$HOME/.pki/nssdb -add opensc-pkcs11 -libfile /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+$ certutil -d sql:$HOME/.pki/nssdb -A -t CT,c,c -n YourCorporateCA -i YourCorporateCA.cer
+```
