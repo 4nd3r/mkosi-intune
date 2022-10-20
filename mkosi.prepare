@@ -6,7 +6,11 @@ apt-get update
 
 apt-get --yes upgrade
 
-apt-get --yes --no-install-recommends install intune-portal microsoft-edge-stable
+apt-get --yes --no-install-recommends install \
+    intune-portal \
+    libnss3-tools \
+    microsoft-edge-stable \
+    opensc
 
 echo 'auth optional pam_gnome_keyring.so' \
     >> /etc/pam.d/common-auth
