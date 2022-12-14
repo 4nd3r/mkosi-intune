@@ -31,7 +31,21 @@ WARNING: This may not be the compliant way of doing things.
 `zstd`,
 ...
 
-Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://github.com/glima/mkosi-intune).
+For X, X-Wayland or Wayland.
+
+NB: It is primarily tested on X, but (pure) Wayland support is there
+for Microsoft Edge, if the host has a Wayland session and active
+socket present.  That is useful when the host itself is on Wayland,
+and anything X in the container image would mean XWayland translation
+on the host (with probably blurry images as a result). If that is your
+use case, please invoke Edge with
+
+```
+$ microsoft-edge --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer
+```
+
+if you want the Wayland path. Sharing screen has been seen to work for
+browser tabs, but is still very unstable--use at your own risk.
 
 ## Build & Install
 

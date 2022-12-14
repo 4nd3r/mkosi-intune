@@ -9,6 +9,8 @@ Bind=$_HOME/Downloads
 BindReadOnly=/run/pcscd/pcscd.comm
 BindReadOnly=/run/user/$_UID/pulse/native:/run/host_pulse_native
 BindReadOnly=/tmp/.X11-unix
+BindReadOnly=/run/user/$_UID/wayland-0:/run/host_wayland_0
+BindReadOnly=/run/user/$_UID/pipewire-0:/run/host_pipewire_0
 
 [Exec]
 Capability=all
