@@ -37,6 +37,7 @@ Bind=$_HOME/Downloads
 BindReadOnly=/run/pcscd/pcscd.comm
 BindReadOnly=/run/user/$SUDO_UID/pulse/native:/run/host_pulse_native
 BindReadOnly=/tmp/.X11-unix
+BindReadOnly=/run/user/$SUDO_UID/wayland-0:/run/host_wayland_0
 
 [Exec]
 Capability=all

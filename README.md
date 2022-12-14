@@ -26,7 +26,19 @@ WARNING: This might not be compliant way of doing things.
 `zstd`,
 ...
 
-Only **X**, Wayland is not supported.
+It is primarily tested on X, but (pure) Wayland support is there for
+Microsoft Edge, if the host has a Wayland session and active socket
+present. Please invoke Edge with
+
+```
+$ microsoft-edge --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer
+```
+
+if you want the Wayland path. Sharing screen works under the browser
+realm with that (browser tab content). That is useful when the host
+itself is on Wayland, and anything X in the container image would mean
+XWayland translation on the host (with probably blurry images as a
+result).
 
 
 ## Install
