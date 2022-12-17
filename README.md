@@ -26,7 +26,7 @@ WARNING: This might not be compliant way of doing things.
 `zstd`,
 ...
 
-Only **X**, Wayland is not supported.
+Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://github.com/glima/mkosi-intune).
 
 
 ## Install
