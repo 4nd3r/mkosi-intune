@@ -18,7 +18,7 @@ WARNING: This might not be compliant way of doing things.
 ## Dependencies
 
 `debootstrap`,
-[`mkosi`](https://github.com/systemd/mkosi),
+[`mkosi`](https://github.com/systemd/mkosi/tree/1c9a6ac5d1729e7797f8a1a4f1a1475c7a2795cf),
 `pulseaudio | pipewire-pulse`,
 `sudo`,
 `systemd-container`,
@@ -29,7 +29,7 @@ WARNING: This might not be compliant way of doing things.
 Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://github.com/glima/mkosi-intune).
 
 
-## Install
+## Build & Install
 
 ```
 $ git clone https://github.com/4nd3r/mkosi-intune
@@ -47,7 +47,7 @@ $ sudo machinectl login corp$HOSTNAME
 
 Initial password is `hello` and you **must** change it, restart the container
 and only then run `intune-portal`. Otherwise keyring initialization might fail.
-Additionally you **must** always login to the container (e.g. after system
+Additionally you **must** always login to the container (e.g. after host
 reboot) to unlock the keyring.
 
 Run `microsoft-edge` to take deep dive into corporate resources, but first

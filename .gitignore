@@ -1,5 +1,0 @@
-mkosi.cache/*
-!mkosi.cache/.gitkeep
-
-mkosi.output/*
-!mkosi.output/.gitkeep
