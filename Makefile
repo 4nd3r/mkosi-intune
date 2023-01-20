@@ -1,22 +1,25 @@
-.PHONY: make build clean install uninstall
+.PHONY: make build force-build clean install uninstall
 
-HOSTNAME:=$(shell hostname | sed 's/^/corp/')
+NAME?=$(shell hostname | sed 's/^/corp/')
 
 make: build install
 
 build:
 	sudo mkosi build
 
+force-build:
+	sudo mkosi --force build
+
 clean:
 	sudo mkosi clean
+	sudo find ./mkosi.cache/ ./mkosi.output/ -mindepth 1 -not -name .gitignore -delete
 
 install:
-	sudo mkdir -p /etc/systemd/nspawn
-	sudo mv mkosi.output/image.nspawn /etc/systemd/nspawn/${HOSTNAME}.nspawn
-	sudo mkdir -p /var/lib/machines
-	sudo rm -rf /var/lib/machines/${HOSTNAME}
-	sudo mv mkosi.output/image /var/lib/machines/${HOSTNAME}
+	sudo mkdir -p /etc/systemd/nspawn /var/lib/machines
+	sudo mv ./mkosi.output/image.nspawn /etc/systemd/nspawn/${NAME}.nspawn
+	sudo rm -rf /var/lib/machines/${NAME}
+	sudo mv ./mkosi.output/ubuntu~jammy/image /var/lib/machines/${NAME}
 
 uninstall:
-	sudo rm -rf /etc/systemd/nspawn/${HOSTNAME}.nspawn /var/lib/machines/${HOSTNAME}
+	sudo rm -rf /etc/systemd/nspawn/${NAME}.nspawn /var/lib/machines/${NAME}
 	sudo rmdir --ignore-fail-on-non-empty /etc/systemd/nspawn /var/lib/machines
