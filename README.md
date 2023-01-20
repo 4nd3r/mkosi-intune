@@ -57,18 +57,6 @@ login and/or recommendation to install Intune and register your device.
 
 ## Networking
 
-For internet connectivity in the container you might have to do the following in your host:
-
-```
-$ sudo mkdir -p /etc/systemd/network/80-container-ve.network.d
-$ sudo tee /etc/systemd/network/80-container-ve.network.d/nat.conf << EOF
-[Network]
-IPMasquerade=both
-EOF
-$ sudo systemctl daemon-reload
-$ sudo machinectl stop ...
-```
-
 If you are using firewall (which is reasonable thing to do), then you have to allow traffic from `ve-*` interfaces.
 
 For example, in case of `nftables`:
