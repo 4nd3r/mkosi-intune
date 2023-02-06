@@ -42,3 +42,9 @@ BindReadOnly=/tmp/.X11-unix
 Capability=all
 PrivateUsers=no
 EOF
+
+cat > mkosi.output/service.conf << EOF
+[Service]
+DevicePolicy=auto
+DeviceAllow=
+EOF
