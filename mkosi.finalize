@@ -20,7 +20,7 @@ chroot "$BUILDROOT" passwd --delete root
 chroot "$BUILDROOT" useradd \
     --uid "$SUDO_UID" \
     --gid "$SUDO_GID" \
-    --groups sudo \
+    --groups sudo,video \
     --create-home \
     --home-dir "$_HOME" \
     --password "$_PASSWORD" \
