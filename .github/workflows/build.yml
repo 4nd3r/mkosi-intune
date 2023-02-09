@@ -1,0 +1,12 @@
+---
+name: Build
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: test
+        run: |
+          command -v debootstrap
+          command -v pip3
+          command -v make
