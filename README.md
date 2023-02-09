@@ -17,8 +17,9 @@ WARNING: This might not be compliant way of doing things.
 
 ## Dependencies
 
+[`mkosi`](https://github.com/systemd/mkosi),
 `debootstrap`,
-[`mkosi`](https://github.com/systemd/mkosi/tree/1c9a6ac5d1729e7797f8a1a4f1a1475c7a2795cf),
+`apt`,
 `pulseaudio | pipewire-pulse`,
 `sudo`,
 `systemd-container`,
