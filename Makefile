@@ -1,47 +1,30 @@
 .PHONY: make build clean install uninstall
 
-NAME?=$(shell hostname | sed 's/^/corp/')
+_HOST?=corphost
+_USER?=${USER}
+_HOME?=${HOME}
+_UID?=$(shell id -u)
+_GID?=$(shell id -g)
 
 make: build install
 
 build:
-	sudo mkosi build
+	PATH="/usr/sbin:${PATH}" _USER="${_USER}" _HOME="${_HOME}" _UID="${_UID}" _GID="${_GID}" mkosi -f build
 
 clean:
-	sudo mkosi clean
-	sudo find \
-		./mkosi.workspace/ \
-		./mkosi.cache/ \
-		./mkosi.output/ \
-		-mindepth 1 \
-		-not -name .gitignore \
-		-delete
+	sudo find mkosi.workspace/ mkosi.cache/ mkosi.output/ -mindepth 1 -not -name .gitignore -delete
 
 install:
-	sudo mkdir -p \
-		/etc/systemd/nspawn \
-		/var/lib/machines
-	sudo mv \
-		./mkosi.output/ubuntu~jammy/image \
-		/var/lib/machines/${NAME}
-	sudo mv \
-		./mkosi.output/image.nspawn \
-		/etc/systemd/nspawn/${NAME}.nspawn
-	sudo mkdir \
-		/etc/systemd/system/systemd-nspawn@${NAME}.service.d
-	sudo mv \
-		./mkosi.output/service.conf \
-		/etc/systemd/system/systemd-nspawn@${NAME}.service.d/drop-in.conf
-	sudo machinectl start ${NAME}
+	sudo mkdir -p /etc/systemd/nspawn /var/lib/machines
+	sudo machinectl import-tar mkosi.output/ubuntu~jammy/image.tar.xz ${_HOST}
+	sudo mv mkosi.output/image.nspawn /etc/systemd/nspawn/${_HOST}.nspawn
+	sudo mkdir /etc/systemd/system/systemd-nspawn@${_HOST}.service.d
+	sudo mv mkosi.output/service.conf /etc/systemd/system/systemd-nspawn@${_HOST}.service.d/drop-in.conf
+	sudo machinectl start ${_HOST}
 
 uninstall:
-	sudo machinectl terminate ${NAME} || true
+	sudo machinectl terminate ${_HOST} || true
 	sleep 3
-	sudo machinectl remove ${NAME} || true
-	sudo rm -rf \
-		/var/lib/machines/${NAME} \
-		/etc/systemd/nspawn/${NAME}.nspawn \
-		/etc/systemd/system/systemd-nspawn@${NAME}.service.d
-	sudo rmdir --ignore-fail-on-non-empty \
-		/etc/systemd/nspawn \
-		/var/lib/machines
+	sudo machinectl remove ${_HOST} || true
+	sudo rm -rf /etc/systemd/nspawn/${_HOST}.nspawn /etc/systemd/system/systemd-nspawn@${_HOST}.service.d
+	sudo rmdir --ignore-fail-on-non-empty /etc/systemd/nspawn /var/lib/machines

@@ -18,12 +18,14 @@ WARNING: This might not be compliant way of doing things.
 
 ## Dependencies
 
-[`mkosi`](https://github.com/systemd/mkosi),
-`debootstrap`,
+[`mkosi`](https://github.com/systemd/mkosi) and
 `apt`,
+`bubblewrap`,
+`debootstrap`,
 `pulseaudio | pipewire-pulse`,
 `sudo`,
 `systemd-container`,
+`uidmap`,
 `xorg`,
 `zstd`,
 ...
@@ -41,8 +43,8 @@ $ make
 ## Use
 
 ```
-$ sudo machinectl start corp$HOSTNAME
-$ sudo machinectl login corp$HOSTNAME
+$ sudo machinectl start corphost
+$ sudo machinectl login corphost
 ```
 
 Initial password is `hello` and you **must** change it, restart the container

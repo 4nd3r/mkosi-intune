@@ -1,12 +1,22 @@
 ---
-name: Build
-on: [push]
+name: build
+on: [workflow_dispatch]
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-      - name: test
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Install dependencies
         run: |
-          command -v debootstrap
-          command -v pip3
-          command -v make
+          sudo apt-get update
+          sudo apt-get -y install bubblewrap debootstrap
+          sudo pip3 install git+https://github.com/systemd/mkosi.git
+      - name: Build image
+        run: |
+          make build
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            mkosi.output

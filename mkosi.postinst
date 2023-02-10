@@ -1,0 +1,26 @@
+#!/bin/sh -e
+
+if [ "$1" != 'final' ]
+then
+    exit 0
+fi
+
+useradd \
+    --uid "$_UID" \
+    --gid "$_GID" \
+    --password "$( awk -F: '$1 == "root" {print $2}' /etc/shadow )" \
+    --create-home \
+    --home-dir "$_HOME" \
+    --shell /bin/bash \
+    --groups sudo,video \
+    "$_USER"
+
+passwd --delete root
+
+systemctl enable systemd-networkd.service
+
+echo 'auth optional pam_gnome_keyring.so' \
+    >> /etc/pam.d/common-auth
+
+echo 'session optional pam_gnome_keyring.so auto_start' \
+    >> /etc/pam.d/common-session
