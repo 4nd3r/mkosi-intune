@@ -18,9 +18,9 @@ clean:
 install:
 	sudo mkdir -p /etc/systemd/nspawn /var/lib/machines
 	sudo machinectl import-tar mkosi.output/ubuntu~jammy/image.tar.xz ${_HOST}
-	sudo mv mkosi.output/image.nspawn /etc/systemd/nspawn/${_HOST}.nspawn
+	sudo cp mkosi.output/image.nspawn /etc/systemd/nspawn/${_HOST}.nspawn
 	sudo mkdir /etc/systemd/system/systemd-nspawn@${_HOST}.service.d
-	sudo mv mkosi.output/service.conf /etc/systemd/system/systemd-nspawn@${_HOST}.service.d/drop-in.conf
+	sudo cp mkosi.output/service.conf /etc/systemd/system/systemd-nspawn@${_HOST}.service.d/drop-in.conf
 	sudo machinectl start ${_HOST}
 
 uninstall:
