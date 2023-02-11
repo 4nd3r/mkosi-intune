@@ -5,6 +5,11 @@ then
     exit 0
 fi
 
+if ! grep -Eq "^$_GROUP:" /etc/group
+then
+    groupadd --gid "$_GID" "$_GROUP"
+fi
+
 useradd \
     --uid "$_UID" \
     --gid "$_GID" \

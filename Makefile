@@ -1,15 +1,16 @@
 .PHONY: make build clean install uninstall
 
 _HOST?=corphost
-_USER?=${USER}
-_HOME?=${HOME}
 _UID?=$(shell id -u)
+_USER?=${USER}
 _GID?=$(shell id -g)
+_GROUP?=$(shell id -gn)
+_HOME?=${HOME}
 
 make: build install
 
 build:
-	PATH="/usr/sbin:${PATH}" _USER="${_USER}" _HOME="${_HOME}" _UID="${_UID}" _GID="${_GID}" mkosi -f build
+	PATH="/usr/sbin:${PATH}" _UID="${_UID}" _USER="${_USER}" _GID="${_GID}" _GROUP="${_GROUP}" _HOME="${_HOME}" mkosi -f build
 
 clean:
 	sudo find mkosi.workspace/ mkosi.cache/ mkosi.output/ -mindepth 1 -not -name .gitignore -delete
