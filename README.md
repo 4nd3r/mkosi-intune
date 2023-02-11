@@ -22,6 +22,7 @@ WARNING: This might not be compliant way of doing things.
 `apt`,
 `bubblewrap`,
 `debootstrap`,
+`pcscd`,
 `pulseaudio | pipewire-pulse`,
 `sudo`,
 `systemd-container`,
