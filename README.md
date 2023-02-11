@@ -43,7 +43,6 @@ $ make
 ## Use
 
 ```
-$ sudo machinectl start corphost
 $ sudo machinectl login corphost
 ```
 
