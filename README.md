@@ -39,6 +39,7 @@ Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://
 $ git clone https://github.com/4nd3r/mkosi-intune
 $ cd mkosi-intune
 $ make
+$ sudo make install
 ```
 
 ## Use
