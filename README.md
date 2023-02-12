@@ -3,7 +3,7 @@
 You want to access corporate resources with
 [Edge](https://www.microsoft.com/en-us/edge),
 but your distro is not (yet) supported by
-[Intune](https://learn.microsoft.com/en-us/mem/intune/fundamentals/)?
+[Intune](https://learn.microsoft.com/en-us/mem/intune/user-help/enroll-device-linux)?
 No worries, you can run Intune and Edge in
 [systemd-nspawn](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html)
 container :partying_face:
