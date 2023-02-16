@@ -5,6 +5,8 @@ then
     exit 0
 fi
 
+systemctl enable systemd-networkd.service
+
 if ! grep -Eq "^$_GROUP:" /etc/group
 then
     groupadd --gid "$_GID" "$_GROUP"
@@ -21,8 +23,6 @@ useradd \
     "$_USER"
 
 passwd --delete root
-
-systemctl enable systemd-networkd.service
 
 echo 'auth optional pam_gnome_keyring.so' \
     >> /etc/pam.d/common-auth
