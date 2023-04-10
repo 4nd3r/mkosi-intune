@@ -33,6 +33,10 @@ WARNING: This might not be compliant way of doing things.
 
 Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://github.com/glima/mkosi-intune).
 
+Upstream `mkosi` is expected, but since it is fast moving target, things can break.
+
+As of **2023-04-10** last known good commit of `mkosi` is [c38240db2c3c6cc864c15d520b73808070a7f363](https://github.com/systemd/mkosi/commit/c38240db2c3c6cc864c15d520b73808070a7f363).
+
 ## Build & Install
 
 ```
