@@ -14,6 +14,8 @@ provided only for reference and with hope that it might be helpful. No
 warranties, be careful and review the code before you run it. **If you don't
 understand the code, then you shouldn't use it.**
 
+Minimum version of Debian which can be used is Bookworm (current testing).
+
 WARNING: This might not be compliant way of doing things.
 
 ## Dependencies
@@ -62,6 +64,18 @@ check if Edge profile status is "*Sync is on*" or you will be greeted with SSO
 login and/or recommendation to install Intune and register your device.
 
 ## Networking
+
+Out-of-the-box systemd-nspawn expects you to use systemd-networkd and ideally systemd-resolved.
+This reduces bit of troubles when setting up container. Systemd ships with `/usr/lib/systemd/network/80-container-ve.network`
+for host side and `/usr/lib/systemd/network/80-container-host0.network` for container side network configuration.
+Although it still requires setting up minimal masquerading rule from user side.
+
+Example with `nftables`:
+```
+$ nft add table nat
+$ nft 'add chain nat postrouting { type nat hook postrouting priority 100 ; }'
+$ nft add rule nat postrouting oifname "ve-corphost" masquerae
+```
 
 If you are using firewall (which is reasonable thing to do), then you have to allow traffic from `ve-*` interfaces.
 
