@@ -65,7 +65,10 @@ login and/or recommendation to install Intune and register your device.
 
 ## Networking
 
-Out-of-box systemd-nspawn expects you to use systemd-networkd and ideally systemd-resolved.
+Networking configurations are very different and therefore cases here
+can be taken as generic guidance.
+
+Out-of-box systemd-nspawn expects you to use `systemd-networkd` and ideally `systemd-resolved`.
 This reduces bit of troubles when setting up container. Systemd ships with `/usr/lib/systemd/network/80-container-ve.network`
 for host side and `/usr/lib/systemd/network/80-container-host0.network` for container side network configuration.
 Although it still requires setting up minimal masquerading rule from user side.
@@ -74,7 +77,7 @@ Example with `nftables`:
 ```
 $ nft add table nat
 $ nft 'add chain nat postrouting { type nat hook postrouting priority 100 ; }'
-$ nft add rule nat postrouting oifname "ve-corphost" masquerae
+$ nft add rule nat postrouting oifname "ve-corphost" masquerade
 ```
 
 If you are using firewall (which is reasonable thing to do), then you have to allow traffic from `ve-*` interfaces.
