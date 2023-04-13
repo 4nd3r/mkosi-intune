@@ -65,7 +65,7 @@ login and/or recommendation to install Intune and register your device.
 
 ## Networking
 
-Out-of-the-box systemd-nspawn expects you to use systemd-networkd and ideally systemd-resolved.
+Out-of-box systemd-nspawn expects you to use systemd-networkd and ideally systemd-resolved.
 This reduces bit of troubles when setting up container. Systemd ships with `/usr/lib/systemd/network/80-container-ve.network`
 for host side and `/usr/lib/systemd/network/80-container-host0.network` for container side network configuration.
 Although it still requires setting up minimal masquerading rule from user side.
