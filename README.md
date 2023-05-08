@@ -100,10 +100,10 @@ table inet filter {
 ...
 ```
 
-### More information for inspiration
+### For inspiration
 
-[Systemd-nspawn networking](https://wiki.archlinux.org/title/Systemd-nspawn#Networking) in Arch Linux wiki.  
-See [`man systemd.nspawn`](https://www.freedesktop.org/software/systemd/man/systemd.nspawn.html) for details.
+* [systemd-nspawn in arch wiki](https://wiki.archlinux.org/title/Systemd-nspawn#Networking)
+* [`man systemd.nspawn`](https://www.freedesktop.org/software/systemd/man/systemd.nspawn.html)
 
 ## Smartcard
 
