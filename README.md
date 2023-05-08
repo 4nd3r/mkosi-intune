@@ -14,8 +14,6 @@ provided only for reference and with hope that it might be helpful. No
 warranties, be careful and review the code before you run it. **If you don't
 understand the code, then you shouldn't use it.**
 
-Minimum version of Debian which can be used is Bookworm (current testing).
-
 WARNING: This might not be compliant way of doing things.
 
 ## Dependencies
@@ -23,11 +21,11 @@ WARNING: This might not be compliant way of doing things.
 [`mkosi`](https://github.com/systemd/mkosi) and
 `apt`,
 `bubblewrap`,
-`debootstrap`,
 `pcscd`,
 `pulseaudio | pipewire-pulse`,
 `sudo`,
 `systemd-container`,
+`ubuntu-keyring`
 `uidmap`,
 `xorg`,
 `zstd`,
@@ -37,7 +35,7 @@ Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://
 
 Upstream `mkosi` is expected, but since it is fast moving target, things can break.
 
-As of **2023-04-10** last known good commit of `mkosi` is [c38240db2c3c6cc864c15d520b73808070a7f363](https://github.com/systemd/mkosi/commit/c38240db2c3c6cc864c15d520b73808070a7f363).
+As of **2023-05-08** last known good commit of `mkosi` is [c55d2d9821fbbb6ff7df6a721adcebe17d77535f](https://github.com/systemd/mkosi/commit/c55d2d9821fbbb6ff7df6a721adcebe17d77535f).
 
 ## Build & Install
 
