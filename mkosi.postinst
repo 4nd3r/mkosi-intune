@@ -5,31 +5,8 @@ then
     exit 0
 fi
 
-#/usr/bin/apt-get --yes update
-#
-#/usr/bin/apt-get --yes upgrade
-#
-#/usr/bin/apt-get --yes install \
-#    adwaita-icon-theme-full \
-#    bash-completion \
-#    ca-certificates \
-#    cracklib-runtime \
-#    fonts-noto-cjk \
-#    fonts-noto-core \
-#    fonts-recommended \
-#    intune-portal \
-#    libnss3-tools \
-#    libpam-gnome-keyring \
-#    lsb-release \
-#    man-db \
-#    microsoft-edge-stable \
-#    opensc \
-#    polkitd \
-#    pulseaudio \
-#    sudo
-
-#systemctl enable systemd-resolved.service
-#systemctl enable systemd-networkd.service
+# https://github.com/systemd/mkosi/issues/1546
+chmod 755 /
 
 if ! grep -Eq "^$_GROUP:" /etc/group
 then
@@ -48,8 +25,12 @@ useradd \
 
 passwd --delete root
 
-#echo 'auth optional pam_gnome_keyring.so' \
-#    >> /etc/pam.d/common-auth
+systemctl enable \
+    systemd-networkd.service \
+    systemd-resolved.service
 
-#echo 'session optional pam_gnome_keyring.so auto_start' \
-#    >> /etc/pam.d/common-session
+echo 'auth optional pam_gnome_keyring.so' \
+    >> /etc/pam.d/common-auth
+
+echo 'session optional pam_gnome_keyring.so auto_start' \
+    >> /etc/pam.d/common-session
