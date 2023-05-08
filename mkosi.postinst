@@ -16,14 +16,13 @@ fi
 useradd \
     --uid "$_UID" \
     --gid "$_GID" \
-    --password "$( awk -F: '$1 == "root" {print $2}' /etc/shadow )" \
     --create-home \
     --home-dir "$_HOME" \
     --shell /bin/bash \
     --groups sudo,video \
     "$_USER"
 
-passwd --delete root
+echo "$_USER:hello" | chpasswd
 
 systemctl enable \
     systemd-networkd.service \
