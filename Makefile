@@ -9,7 +9,7 @@ _HOME?=$(HOME)
 
 build:
 	mkdir -p mkosi.cache mkosi.output mkosi.workspace
-	PATH="/usr/sbin:$(PATH)" _UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi -f build
+	_UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi -f build
 
 uidcheck:
 	@if [ "$(_UID)" != 0 ]; then echo 'use sudo'; exit 1; fi
@@ -19,10 +19,10 @@ clean: uidcheck
 
 install: uidcheck
 	mkdir -p /etc/systemd/nspawn /var/lib/machines
-	machinectl import-tar mkosi.output/ubuntu~jammy/image.tar $(_HOST)
+	machinectl import-tar mkosi.output/image.tar $(_HOST)
 	cp mkosi.output/image.nspawn /etc/systemd/nspawn/$(_HOST).nspawn
 	mkdir /etc/systemd/system/systemd-nspawn@$(_HOST).service.d
-	cp mkosi.output/service.conf /etc/systemd/system/systemd-nspawn@$(_HOST).service.d/drop-in.conf
+	cp mkosi.output/image.service /etc/systemd/system/systemd-nspawn@$(_HOST).service.d/drop-in.conf
 	machinectl start $(_HOST)
 
 uninstall: uidcheck

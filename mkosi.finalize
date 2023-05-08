@@ -1,11 +1,11 @@
 #!/bin/sh -e
 
-if [ "$1" != 'final' ]
+if [ -n "$1" ] && [ "$1" != 'final' ]
 then
     exit 0
 fi
 
-cat > mkosi.output/image.nspawn << EOF
+cat > "mkosi.output/image.nspawn" << EOF
 [Files]
 Bind=/dev/dri
 Bind=$_HOME/Desktop
@@ -19,7 +19,7 @@ Capability=all
 PrivateUsers=no
 EOF
 
-cat > mkosi.output/service.conf << EOF
+cat > "mkosi.output/image.service" << EOF
 [Service]
 DevicePolicy=auto
 DeviceAllow=
