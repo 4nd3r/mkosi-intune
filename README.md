@@ -8,13 +8,13 @@ No worries, you can run Intune and Edge in
 [systemd-nspawn](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html)
 container :partying_face:
 
-I made this on Debian Sid (unstable) with bleeding edge dependencies. Most
-probably **this is not compatible with your system**. Everything here is
-provided only for reference and with hope that it might be helpful. No
-warranties, be careful and review the code before you run it. **If you don't
-understand the code, then you shouldn't use it.**
+I created this on Debian Sid (unstable) using the latest dependencies.
+It's unlikely to be compatible with your system.
+This is only provided for reference and to potentially be helpful.
+Please be aware that there are no warranties, so proceed with caution and review the code before running it.
+If you don't understand the code, it's best not to use it.
 
-WARNING: This might not be compliant way of doing things.
+WARNING: This may not be the compliant way of doing things.
 
 ## Dependencies
 
