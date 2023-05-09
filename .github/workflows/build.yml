@@ -10,7 +10,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get --yes update
-          sudo apt-get --yes install bubblewrap
+          sudo apt-get --yes install bubblewrap pandoc
           sudo pip3 install git+https://github.com/systemd/mkosi.git
       - name: Build image
         run: |
