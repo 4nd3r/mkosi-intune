@@ -9,12 +9,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get -y install bubblewrap debootstrap
+          sudo apt-get --yes update
+          sudo apt-get --yes install bubblewrap
           sudo pip3 install git+https://github.com/systemd/mkosi.git
       - name: Build image
         run: |
-          make build
+          make
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:

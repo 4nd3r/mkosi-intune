@@ -8,7 +8,7 @@ No worries, you can run Intune and Edge in
 [systemd-nspawn](https://www.freedesktop.org/software/systemd/man/systemd-nspawn.html)
 container :partying_face:
 
-This is built on Debian Sid (unstable) with bleeding edge dependencies. Most
+I made this on Debian Sid (unstable) with bleeding edge dependencies. Most
 probably **this is not compatible with your system**. Everything here is
 provided only for reference and with hope that it might be helpful. No
 warranties, be careful and review the code before you run it. **If you don't
@@ -35,7 +35,7 @@ Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://
 
 Upstream `mkosi` is expected, but since it is fast moving target, things can break.
 
-As of **2023-05-08** last known good commit of `mkosi` is [c55d2d9821fbbb6ff7df6a721adcebe17d77535f](https://github.com/systemd/mkosi/commit/c55d2d9821fbbb6ff7df6a721adcebe17d77535f).
+As of **2023-05-09** last known good commit of `mkosi` is [f1a017a9003058193c99917b2f38cd9582818525](https://github.com/systemd/mkosi/commit/f1a017a9003058193c99917b2f38cd9582818525).
 
 ## Build & Install
 
