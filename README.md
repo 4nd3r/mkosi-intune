@@ -25,7 +25,7 @@ WARNING: This may not be the compliant way of doing things.
 `pulseaudio | pipewire-pulse`,
 `sudo`,
 `systemd-container`,
-`ubuntu-keyring`
+`ubuntu-keyring`,
 `uidmap`,
 `xorg`,
 `zstd`,
@@ -35,7 +35,7 @@ Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://
 
 Upstream `mkosi` is expected, but since it is fast moving target, things can break.
 
-As of **2023-05-09** last known good commit of `mkosi` is [f1a017a9003058193c99917b2f38cd9582818525](https://github.com/systemd/mkosi/commit/f1a017a9003058193c99917b2f38cd9582818525).
+As of **2023-07-29** last known good commit of `mkosi` is [fbdf8ea3eec6edbec29b02aad3805cfdcb5f041b](https://github.com/systemd/mkosi/commit/fbdf8ea3eec6edbec29b02aad3805cfdcb5f041b).
 
 ## Build & Install
 

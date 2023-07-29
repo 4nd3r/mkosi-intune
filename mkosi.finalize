@@ -5,6 +5,10 @@ then
     exit 0
 fi
 
+ln -sf \
+    ../run/systemd/resolve/stub-resolv.conf \
+    "$BUILDROOT/etc/resolv.conf"
+
 cat > "mkosi.output/image.nspawn" << EOF
 [Files]
 Bind=/dev/dri

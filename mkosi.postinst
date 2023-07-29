@@ -5,29 +5,19 @@ then
     exit 0
 fi
 
-apt-get --yes update
+apt-get update
 
 apt-get --yes upgrade
 
 apt-get --yes install \
-    adwaita-icon-theme-full \
-    cracklib-runtime \
-    fonts-noto-cjk \
-    fonts-noto-core \
-    fonts-recommended \
+    dbus-user-session \
     intune-portal \
-    libnss3-tools \
-    libpam-gnome-keyring \
-    lsb-release \
     microsoft-edge-stable \
-    opensc \
     polkitd \
     pulseaudio \
-    sudo
+    systemd
 
-systemctl enable \
-    systemd-networkd.service \
-    systemd-resolved.service
+apt-get clean
 
 echo 'auth optional pam_gnome_keyring.so' \
     >> /etc/pam.d/common-auth

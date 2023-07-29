@@ -21,7 +21,7 @@ install: uidcheck
 	mkdir -p /etc/systemd/nspawn /var/lib/machines
 	machinectl import-tar mkosi.output/image.tar $(_HOST)
 	cp mkosi.output/image.nspawn /etc/systemd/nspawn/$(_HOST).nspawn
-	mkdir /etc/systemd/system/systemd-nspawn@$(_HOST).service.d
+	mkdir -p /etc/systemd/system/systemd-nspawn@$(_HOST).service.d
 	cp mkosi.output/image.service /etc/systemd/system/systemd-nspawn@$(_HOST).service.d/drop-in.conf
 	machinectl start $(_HOST)
 
