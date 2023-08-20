@@ -1,18 +1,10 @@
 #!/bin/sh -e
 
-if [ -n "$1" ] && [ "$1" != 'final' ]
-then
-    exit 0
-fi
-
-ln -sf \
-    ../run/systemd/resolve/stub-resolv.conf \
-    "$BUILDROOT/etc/resolv.conf"
-
-cat > "mkosi.output/image.nspawn" << EOF
+cat > mkosi.output/image.nspawn << EOF
 [Files]
 Bind=/dev/dri
 Bind=$_HOME/Desktop
+Bind=$_HOME/Documents
 Bind=$_HOME/Downloads
 BindReadOnly=/run/pcscd/pcscd.comm
 BindReadOnly=/run/user/$_UID/pulse/native:/run/host_pulse_native
@@ -23,7 +15,7 @@ Capability=all
 PrivateUsers=no
 EOF
 
-cat > "mkosi.output/image.service" << EOF
+cat > mkosi.output/image.service << EOF
 [Service]
 DevicePolicy=auto
 DeviceAllow=

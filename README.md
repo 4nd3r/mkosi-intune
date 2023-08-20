@@ -35,7 +35,7 @@ Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://
 
 Upstream `mkosi` is expected, but since it is fast moving target, things can break.
 
-As of **2023-07-29** last known good commit of `mkosi` is [fbdf8ea3eec6edbec29b02aad3805cfdcb5f041b](https://github.com/systemd/mkosi/commit/fbdf8ea3eec6edbec29b02aad3805cfdcb5f041b).
+As of **2023-08-20** last known good commit of `mkosi` is [19bb5e274d9a9c23891905c4bcbb8f68955a701d](https://github.com/systemd/mkosi/commit/19bb5e274d9a9c23891905c4bcbb8f68955a701d).
 
 ## Build & Install
 

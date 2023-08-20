@@ -1,29 +1,9 @@
 #!/bin/sh -e
 
-if [ "$1" != 'final' ]
+if [ "$container" != "mkosi" ]
 then
-    exit 0
+    exec mkosi-chroot "$SCRIPT" "$@"
 fi
-
-apt-get update
-
-apt-get --yes upgrade
-
-apt-get --yes install \
-    dbus-user-session \
-    intune-portal \
-    microsoft-edge-stable \
-    polkitd \
-    pulseaudio \
-    systemd
-
-apt-get clean
-
-echo 'auth optional pam_gnome_keyring.so' \
-    >> /etc/pam.d/common-auth
-
-echo 'session optional pam_gnome_keyring.so auto_start' \
-    >> /etc/pam.d/common-session
 
 if ! grep -Eq "^$_GROUP:" /etc/group
 then
@@ -40,3 +20,9 @@ useradd \
     "$_USER"
 
 echo "$_USER:hello" | chpasswd
+
+echo 'auth optional pam_gnome_keyring.so' \
+    >> /etc/pam.d/common-auth
+
+echo 'session optional pam_gnome_keyring.so auto_start' \
+    >> /etc/pam.d/common-session
