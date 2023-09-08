@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-if [ "$container" != "mkosi" ]
+if [ "$container" != 'mkosi' ]
 then
     exec mkosi-chroot "$SCRIPT" "$@"
 fi

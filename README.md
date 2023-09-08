@@ -18,7 +18,7 @@ WARNING: This may not be the compliant way of doing things.
 
 ## Dependencies
 
-[`mkosi`](https://github.com/systemd/mkosi) and
+[`mkosi` v16](https://github.com/systemd/mkosi/releases/tag/v16) and
 `apt`,
 `bubblewrap`,
 `pcscd`,
@@ -32,10 +32,6 @@ WARNING: This may not be the compliant way of doing things.
 ...
 
 Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://github.com/glima/mkosi-intune).
-
-Upstream `mkosi` is expected, but since it is fast moving target, things can break.
-
-As of **2023-08-20** last known good commit of `mkosi` is [19bb5e274d9a9c23891905c4bcbb8f68955a701d](https://github.com/systemd/mkosi/commit/19bb5e274d9a9c23891905c4bcbb8f68955a701d).
 
 ## Build & Install
 
