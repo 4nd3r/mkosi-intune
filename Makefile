@@ -25,6 +25,7 @@ install: uidcheck
 	cp mkosi.output/image.nspawn /etc/systemd/nspawn/$(_HOST).nspawn
 	mkdir -p /etc/systemd/system/systemd-nspawn@$(_HOST).service.d
 	cp mkosi.output/image.service /etc/systemd/system/systemd-nspawn@$(_HOST).service.d/drop-in.conf
+	systemctl daemon-reload
 	machinectl start $(_HOST)
 
 uninstall: uidcheck
@@ -32,5 +33,6 @@ uninstall: uidcheck
 	if machinectl image-status $(_HOST) > /dev/null 2>&1; then machinectl remove $(_HOST); fi
 	rm -rf /etc/systemd/nspawn/$(_HOST).nspawn /etc/systemd/system/systemd-nspawn@$(_HOST).service.d
 	rmdir --ignore-fail-on-non-empty /etc/systemd/nspawn /var/lib/machines
+	systemctl daemon-reload
 
 reinstall: uninstall install

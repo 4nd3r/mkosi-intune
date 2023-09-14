@@ -59,47 +59,7 @@ login and/or recommendation to install Intune and register your device.
 
 ## Networking
 
-Networking configurations could be very different and therefore cases here
-can be taken only as generic guidance.
-
-### Lazy approach
-
-Easiest option is to add `VirtualEthernet=no` to your corporate access
-container's `.nspawn` file, but with this you might run into problems if you
-have more nspawn containers running.
-
-### Harder but allows to have multiple containers
-
-Out-of-box systemd-nspawn expects you to use `systemd-networkd` and ideally `systemd-resolved`.
-This reduces bit of troubles when setting up container. Systemd ships with `/usr/lib/systemd/network/80-container-ve.network`
-for host side and `/usr/lib/systemd/network/80-container-host0.network` for container side network configuration.
-Although it still requires setting up minimal masquerading rule from user side.
-
-Example with `nftables`:
-```
-$ nft add table nat
-$ nft 'add chain nat postrouting { type nat hook postrouting priority 100 ; }'
-$ nft add rule nat postrouting oifname "ve-corphost" masquerade
-```
-
-If you are using firewall (which is reasonable thing to do), then you have to allow traffic from `ve-*` interfaces.
-
-For example, in case of `nftables`:
-
-```
-$ sudo cat /etc/nftables.conf
-...
-table inet filter {
-    chain input {
-        ...
-        iifname ve-* accept
-...
-```
-
-### For inspiration
-
-* [systemd-nspawn in arch wiki](https://wiki.archlinux.org/title/Systemd-nspawn#Networking)
-* [`man systemd.nspawn`](https://www.freedesktop.org/software/systemd/man/systemd.nspawn.html)
+TODO
 
 ## Smartcard
 

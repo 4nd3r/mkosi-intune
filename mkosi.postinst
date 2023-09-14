@@ -19,6 +19,12 @@ useradd \
     --groups sudo,video \
     "$_USER"
 
+systemctl mask systemd-resolved.service
+
+echo "$_HOST" > /etc/hostname
+
+echo "127.0.0.1 $_HOST localhost" > /etc/hosts
+
 echo "$_USER:hello" | chpasswd
 
 echo 'auth optional pam_gnome_keyring.so' \
