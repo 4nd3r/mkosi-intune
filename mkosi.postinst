@@ -21,9 +21,9 @@ useradd \
 
 systemctl mask systemd-resolved.service
 
-echo "$_HOST" > /etc/hostname
+echo "$_NAME" > /etc/hostname
 
-echo "127.0.0.1 $_HOST localhost" > /etc/hosts
+echo "127.0.0.1 $_NAME localhost" > /etc/hosts
 
 echo "$_USER:hello" | chpasswd
 
