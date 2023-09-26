@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-cat > mkosi.output/image.nspawn << EOF
+cat > "$OUTPUTDIR/$_NAME.nspawn" << EOF
 [Files]
 Bind=/dev/dri
 Bind=$_HOME/Desktop
@@ -19,7 +19,7 @@ ResolvConf=bind-host
 VirtualEthernet=no
 EOF
 
-cat > mkosi.output/image.service << EOF
+cat > "$OUTPUTDIR/$_NAME.service" << EOF
 [Service]
 DevicePolicy=auto
 DeviceAllow=

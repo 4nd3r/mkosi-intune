@@ -18,7 +18,7 @@ WARNING: This may not be the compliant way of doing things.
 
 ## Dependencies
 
-[`mkosi` v16](https://github.com/systemd/mkosi/releases/tag/v16) and
+[`mkosi` v17.1](https://github.com/systemd/mkosi/releases/tag/v17.1) and
 `apt`,
 `bubblewrap`,
 `pcscd`,
@@ -59,7 +59,9 @@ login and/or recommendation to install Intune and register your device.
 
 ## Networking
 
-TODO
+`VirtualEthernet=no` is used, which means that container has access to host
+network. This simplifies life if you are moving your laptop between different
+networks. YMMV.
 
 ## Smartcard
 
