@@ -1,6 +1,6 @@
 #!/bin/sh -e
 
-cat > "$OUTPUTDIR/$_NAME.nspawn" << EOF
+cat > "$OUTPUTDIR/$IMAGE_ID.nspawn" << EOF
 [Files]
 Bind=/dev/dri
 Bind=$_HOME/Desktop
@@ -19,7 +19,7 @@ ResolvConf=bind-host
 VirtualEthernet=no
 EOF
 
-cat > "$OUTPUTDIR/$_NAME.service" << EOF
+cat > "$OUTPUTDIR/$IMAGE_ID.service" << EOF
 [Service]
 DevicePolicy=auto
 DeviceAllow=

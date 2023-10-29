@@ -21,9 +21,9 @@ useradd \
 
 systemctl mask systemd-resolved.service
 
-echo "$_NAME" > /etc/hostname
+echo "$IMAGE_ID" > /etc/hostname
 
-echo "127.0.0.1 $_NAME localhost" > /etc/hosts
+echo "127.0.0.1 $IMAGE_ID localhost" > /etc/hosts
 
 echo "$_USER:hello" | chpasswd
 

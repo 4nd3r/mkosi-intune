@@ -1,38 +1,52 @@
 .PHONY: build uidcheck clean install uninstall reinstall
 
-_NAME?=corphost
-_UID?=$(shell id -u)
-_USER?=$(USER)
-_GID?=$(shell id -g)
-_GROUP?=$(shell id -gn)
-_HOME?=$(HOME)
+NAME?=corphost
+
+_UID=$(shell id -u)
+_USER=$(USER)
+_GID=$(shell id -g)
+_GROUP=$(shell id -gn)
+_HOME=$(HOME)
+
+_WORKSPACE_DIR=mkosi.workspace
+_CACHE_DIR=mkosi.cache
+_OUTPUT_DIR=mkosi.output
+_MACHINES_DIR=/var/lib/machines
+_NSPAWN_DIR=/etc/systemd/nspawn
+_SERVICE_DIR=/etc/systemd/system/systemd-nspawn@$(NAME).service.d
+
+_IMAGE_SRC=$(_OUTPUT_DIR)/$(NAME).tar
+_NSPAWN_SRC=$(_OUTPUT_DIR)/$(NAME).nspawn
+_SERVICE_SRC=$(_OUTPUT_DIR)/$(NAME).service
+
+_NSPAWN_DST=$(_NSPAWN_DIR)/$(NAME).nspawn
+_SERVICE_DST=$(_SERVICE_DIR)/drop-in.conf
 
 build:
-	mkdir -p mkosi.output mkosi.workspace
-	if [ ! -e mkosi.cache ]; then mkdir mkosi.cache; fi
-	_NAME="$(_NAME)" _UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi --image-id $(_NAME) -f
+	mkdir -p $(_WORKSPACE_DIR) $(_OUTPUT_DIR)
+	if [ ! -e $(_CACHE_DIR) ]; then mkdir $(_CACHE_DIR); fi
+	NAME="$(NAME)" _UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi --image-id $(NAME) -f
 
 uidcheck:
 	@if [ "$(_UID)" != 0 ]; then echo 'use sudo'; exit 1; fi
 
 clean: uidcheck
-	rm -rf mkosi.output mkosi.workspace
-	if [ ! -L mkosi.cache ]; then rm -rf mkosi.cache; fi
+	rm -rf $(_WORKSPACE_DIR) $(_OUTPUT_DIR)
+	if [ ! -L $(_CACHE_DIR) ]; then rm -rf $(_CACHE_DIR); fi
 
 install: uidcheck
-	mkdir -p /etc/systemd/nspawn /var/lib/machines
-	machinectl import-tar mkosi.output/$(_NAME).tar $(_NAME)
-	cp mkosi.output/$(_NAME).nspawn /etc/systemd/nspawn/$(_NAME).nspawn
-	mkdir -p /etc/systemd/system/systemd-nspawn@$(_NAME).service.d
-	cp mkosi.output/$(_NAME).service /etc/systemd/system/systemd-nspawn@$(_NAME).service.d/drop-in.conf
+	mkdir -p $(_MACHINES_DIR) $(_NSPAWN_DIR)
+	machinectl import-tar $(_IMAGE_SRC) $(NAME)
+	if [ -f $(_NSPAWN_SRC) ]; then cp $(_NSPAWN_SRC) $(_NSPAWN_DST); fi
+	if [ -f $(_SERVICE_SRC) ]; then mkdir -p $(_SERVICE_DIR); cp $(_SERVICE_SRC) $(_SERVICE_DST); fi
 	systemctl daemon-reload
-	machinectl start $(_NAME)
+	machinectl start $(NAME)
 
 uninstall: uidcheck
-	if machinectl status $(_NAME) > /dev/null 2>&1; then machinectl terminate $(_NAME); sleep 3; fi
-	if machinectl image-status $(_NAME) > /dev/null 2>&1; then machinectl remove $(_NAME); fi
-	rm -rf /etc/systemd/nspawn/$(_NAME).nspawn /etc/systemd/system/systemd-nspawn@$(_NAME).service.d
-	rmdir --ignore-fail-on-non-empty /etc/systemd/nspawn /var/lib/machines
+	if machinectl status $(NAME) > /dev/null 2>&1; then machinectl terminate $(NAME); sleep 3; fi
+	if machinectl image-status $(NAME) > /dev/null 2>&1; then machinectl remove $(NAME); fi
+	rm -rf $(_NSPAWN_DST) $(_SERVICE_DIR)
+	rmdir --ignore-fail-on-non-empty $(_MACHINES_DIR) $(_NSPAWN_DIR)
 	systemctl daemon-reload
 
 reinstall: uninstall install
