@@ -3,14 +3,24 @@
 cat > "$OUTPUTDIR/$IMAGE_ID.nspawn" << EOF
 [Files]
 Bind=/dev/dri
+# Uncomment the wanted camera devices. They need to be present on
+# container start. Afterwards you could create them as written in
+# https://askubuntu.com/a/1068341
+#Bind=/dev/video0
+#Bind=/dev/video1
+#Bind=/dev/video2
+#Bind=/dev/video3
+#Bind=/dev/video4
+#Bind=/dev/video5
+#Bind=/dev/video6
 Bind=$_HOME/Desktop
 Bind=$_HOME/Documents
 Bind=$_HOME/Downloads
 BindReadOnly=/run/pcscd/pcscd.comm
 BindReadOnly=/run/user/$_UID/pulse/native:/run/host_pulse_native
 BindReadOnly=/tmp/.X11-unix
-BindReadOnly=/run/user/$_UID/wayland-0:/run/host_wayland_0
-BindReadOnly=/run/user/$_UID/pipewire-0:/run/host_pipewire_0
+#WAYLAND: BindReadOnly=/run/user/$_UID/wayland-0:/run/host_wayland_0
+#WAYLAND: BindReadOnly=/run/user/$_UID/pipewire-0:/run/host_pipewire_0
 
 [Exec]
 Capability=all
