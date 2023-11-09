@@ -18,7 +18,7 @@ WARNING: This may not be the compliant way of doing things.
 
 ## Dependencies
 
-[`mkosi` v18](https://github.com/systemd/mkosi/releases/tag/v18) and
+[`mkosi` v19](https://github.com/systemd/mkosi) (as of 2023-11-09 this has not been released yet) and
 `apt`,
 `bubblewrap`,
 `pcscd`,
@@ -31,8 +31,6 @@ WARNING: This may not be the compliant way of doing things.
 `zstd`,
 ...
 
-Only **X**, for Wayland see [@glima](https://github.com/glima)'s [fork](https://github.com/glima/mkosi-intune).
-
 ## Build & Install
 
 ```
@@ -42,20 +40,20 @@ $ make
 $ sudo make install
 ```
 
+By default, the image is built for X. If you want to build an image with
+Wayland support, use `make wl` instead (**work in progress**). During the build
+process, you will be prompted for a compliant password.
+
 ## Use
 
 ```
 $ sudo machinectl login corphost
 ```
 
-Initial password is `hello` and you **must** change it, restart the container
-and only then run `intune-portal`. Otherwise keyring initialization might fail.
-Additionally you **must** always login to the container (e.g. after host
-reboot) to unlock the keyring.
-
-Run `microsoft-edge` to take deep dive into corporate resources, but first
-check if Edge profile status is "*Sync is on*" or you will be greeted with SSO
-login and/or recommendation to install Intune and register your device.
+Begin by running `intune-portal` to register your machine. Once that's
+complete, you can use `microsoft-edge` to take deep dive into corporate
+resources. Make sure that the Edge profile status shows "*Sync is on*" before
+proceeding, as things may not work properly otherwise.
 
 ## Networking
 

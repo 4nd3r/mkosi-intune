@@ -1,4 +1,4 @@
-.PHONY: build uidcheck clean install uninstall reinstall
+.PHONY: x wl build uidcheck clean install uninstall reinstall
 
 NAME?=corphost
 
@@ -22,10 +22,16 @@ _SERVICE_SRC=$(_OUTPUT_DIR)/$(NAME).service
 _NSPAWN_DST=$(_NSPAWN_DIR)/$(NAME).nspawn
 _SERVICE_DST=$(_SERVICE_DIR)/drop-in.conf
 
+x: _PROFILE=x
+x: build
+
+wl: _PROFILE=wl
+wl: build
+
 build:
 	mkdir -p $(_WORKSPACE_DIR) $(_OUTPUT_DIR)
 	if [ ! -e $(_CACHE_DIR) ]; then mkdir $(_CACHE_DIR); fi
-	NAME="$(NAME)" _UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi --image-id $(NAME) -f
+	NAME="$(NAME)" _UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi --profile $(_PROFILE) --image-id $(NAME) -f
 
 uidcheck:
 	@if [ "$(_UID)" != 0 ]; then echo 'use sudo'; exit 1; fi

@@ -25,10 +25,10 @@ echo "$IMAGE_ID" > /etc/hostname
 
 echo "127.0.0.1 $IMAGE_ID localhost" > /etc/hosts
 
-echo "$_USER:hello" | chpasswd
-
 echo 'auth optional pam_gnome_keyring.so' \
     >> /etc/pam.d/common-auth
 
 echo 'session optional pam_gnome_keyring.so auto_start' \
     >> /etc/pam.d/common-session
+
+passwd "$_USER"
