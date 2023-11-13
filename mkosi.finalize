@@ -2,6 +2,9 @@
 
 cat > "$OUTPUTDIR/$IMAGE_ID.service" << EOF
 [Service]
+ExecStartPost=/bin/sh -c 'sleep 3; for d in /dev/video*; do machinectl bind $IMAGE_ID \$d --mkdir; done'
+Restart=on-failure
+RestartSec=3
 DevicePolicy=auto
 DeviceAllow=
 EOF
