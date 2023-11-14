@@ -59,7 +59,7 @@ proceeding, as things may not work properly otherwise.
 
 `VirtualEthernet=no` is used, which means that container has access to host
 network. This simplifies life if you are moving your laptop between different
-networks. YMMV.
+networks or have multiple network interfaces. YMMV.
 
 ## Smartcard
 
