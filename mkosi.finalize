@@ -2,7 +2,7 @@
 
 cat > "$OUTPUTDIR/$IMAGE_ID.service" << EOF
 [Service]
-ExecStartPost=/bin/sh -c 'sleep 3; for d in /dev/video*; do machinectl bind $IMAGE_ID \$d --mkdir; done'
+ExecStartPost=-/usr/bin/find /dev -maxdepth 1 -name 'video*' -exec machinectl bind $IMAGE_ID {} --mkdir \;
 Restart=on-failure
 RestartSec=3
 DevicePolicy=auto
