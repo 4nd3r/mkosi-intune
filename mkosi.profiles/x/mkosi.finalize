@@ -11,7 +11,6 @@ BindReadOnly=/run/user/$_UID/pulse/native:/run/host_pulse_native
 BindReadOnly=/tmp/.X11-unix
 
 [Exec]
-Capability=all
 PrivateUsers=no
 ResolvConf=bind-host
 
