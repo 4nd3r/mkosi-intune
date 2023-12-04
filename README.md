@@ -70,3 +70,14 @@ $ opensc-tool -l
 $ modutil -dbdir sql:$HOME/.pki/nssdb -add opensc-pkcs11 -libfile /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
 $ certutil -d sql:$HOME/.pki/nssdb -A -t CT,c,c -n YourCorporateCA -i YourCorporateCA.cer
 ```
+
+**NB!** `pcscd` [2.0.1](https://github.com/LudovicRousseau/PCSC/blob/2.0.1/ChangeLog)
+enabled polkit by default, which breaks reading smartcard in container as regular user.
+
+This is the workaround I use in host:
+```
+$ cat /etc/default/pcscd
+PCSCD_ARGS='--disable-polkit'
+```
+
+Don't forget to restart `pcscd.service`.
