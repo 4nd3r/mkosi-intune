@@ -8,7 +8,6 @@ _GID=$(shell id -g)
 _GROUP=$(shell id -gn)
 _HOME=$(HOME)
 
-_WORKSPACE_DIR=mkosi.workspace
 _CACHE_DIR=mkosi.cache
 _OUTPUT_DIR=mkosi.output
 _MACHINES_DIR=/var/lib/machines
@@ -29,7 +28,7 @@ wl: _PROFILE=wl
 wl: build
 
 build:
-	mkdir -p $(_WORKSPACE_DIR) $(_OUTPUT_DIR)
+	mkdir -p $(_OUTPUT_DIR)
 	if [ ! -e $(_CACHE_DIR) ]; then mkdir $(_CACHE_DIR); fi
 	NAME="$(NAME)" _UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi --profile $(_PROFILE) --image-id $(NAME) -f
 
@@ -37,7 +36,7 @@ uidcheck:
 	@if [ "$(_UID)" != 0 ]; then echo 'use sudo'; exit 1; fi
 
 clean: uidcheck
-	rm -rf $(_WORKSPACE_DIR) $(_OUTPUT_DIR)
+	rm -rf $(_OUTPUT_DIR)
 	if [ ! -L $(_CACHE_DIR) ]; then rm -rf $(_CACHE_DIR); fi
 
 install: uidcheck
