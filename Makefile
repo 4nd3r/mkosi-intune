@@ -30,7 +30,7 @@ wl: build
 build:
 	mkdir -p $(_OUTPUT_DIR)
 	if [ ! -e $(_CACHE_DIR) ]; then mkdir $(_CACHE_DIR); fi
-	NAME="$(NAME)" _UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi --profile $(_PROFILE) --image-id $(NAME) -f
+	_UID="$(_UID)" _USER="$(_USER)" _GID="$(_GID)" _GROUP="$(_GROUP)" _HOME="$(_HOME)" mkosi --profile $(_PROFILE) --image-id $(NAME) -f
 
 uidcheck:
 	@if [ "$(_UID)" != 0 ]; then echo 'use sudo'; exit 1; fi
