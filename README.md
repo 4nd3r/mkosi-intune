@@ -40,9 +40,9 @@ $ make
 $ sudo make install
 ```
 
-By default, the image is built for X. If you want to build an image with
-Wayland support, use `make wl` instead (**work in progress**). During the build
-process, you will be prompted for a compliant password.
+By default, the image is built for X. If you want to build an image
+with Wayland support, use `make wl` instead. During the build process,
+you will be prompted for a compliant password.
 
 ## Use
 
