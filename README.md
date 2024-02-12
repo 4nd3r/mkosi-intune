@@ -72,7 +72,7 @@ $ certutil -d sql:$HOME/.pki/nssdb -A -t CT,c,c -n YourCorporateCA -i YourCorpor
 ```
 
 **NB!** `pcscd` [2.0.1](https://github.com/LudovicRousseau/PCSC/blob/2.0.1/ChangeLog)
-enabled polkit by default, which breaks reading smartcard in container as regular user.
+enabled polkit by default, which breaks reading smartcard in container for regular user.
 
 This is the workaround I use in host:
 ```
