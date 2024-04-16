@@ -14,8 +14,6 @@ useradd \
     --groups sudo,video \
     "$_USER"
 
-systemctl mask systemd-resolved.service
-
 echo "$IMAGE_ID" > /etc/hostname
 
 echo "127.0.0.1 $IMAGE_ID localhost" > /etc/hosts
