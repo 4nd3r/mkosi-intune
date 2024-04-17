@@ -1,6 +1,17 @@
 #!/bin/sh -e
 
-if ! grep -Eq "^$_GROUP:" /etc/group
+echo "$IMAGE_ID" > /etc/hostname
+echo "127.0.0.1 $IMAGE_ID localhost" > /etc/hosts
+
+echo 'auth optional pam_gnome_keyring.so' >> /etc/pam.d/common-auth
+echo 'session optional pam_gnome_keyring.so auto_start' >> /etc/pam.d/common-session
+
+if [ -f azvpn.deb ]
+then
+    dpkg -i azvpn.deb
+fi
+
+if ! getent group "$_GROUP" > /dev/null
 then
     groupadd --gid "$_GID" "$_GROUP"
 fi
@@ -13,15 +24,5 @@ useradd \
     --shell /bin/bash \
     --groups sudo,video \
     "$_USER"
-
-echo "$IMAGE_ID" > /etc/hostname
-
-echo "127.0.0.1 $IMAGE_ID localhost" > /etc/hosts
-
-echo 'auth optional pam_gnome_keyring.so' \
-    >> /etc/pam.d/common-auth
-
-echo 'session optional pam_gnome_keyring.so auto_start' \
-    >> /etc/pam.d/common-session
 
 passwd "$_USER"
