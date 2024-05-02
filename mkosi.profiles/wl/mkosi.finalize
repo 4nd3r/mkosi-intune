@@ -14,10 +14,12 @@ BindReadOnly=/run/user/$_UID/wayland-0:/run/host_wayland_0
 BindReadOnly=/run/user/$_UID/pipewire-0:/run/host_pipewire_0
 
 [Exec]
-Capability=CAP_NET_ADMIN
+#Capability=CAP_NET_ADMIN
 PrivateUsers=no
-ResolvConf=bind-host
+#ResolvConf=bind-host
 
 [Network]
-VirtualEthernet=no
+# If you want to give container access to host networking, then
+# set this to "no" and uncomment Capability and ResolvConf above.
+VirtualEthernet=yes
 EOF

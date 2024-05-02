@@ -12,10 +12,12 @@ BindReadOnly=/run/user/$_UID/pulse/native:/run/host_pulse_native
 BindReadOnly=/tmp/.X11-unix
 
 [Exec]
-Capability=CAP_NET_ADMIN
+#Capability=CAP_NET_ADMIN
 PrivateUsers=no
-ResolvConf=bind-host
+#ResolvConf=bind-host
 
 [Network]
-VirtualEthernet=no
+# If you want to give container access to host networking, then
+# set this to "no" and uncomment Capability and ResolvConf above.
+VirtualEthernet=yes
 EOF

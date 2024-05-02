@@ -57,9 +57,18 @@ proceeding, as things may not work properly otherwise.
 
 ## Networking
 
-`VirtualEthernet=no` is used, which means that container has access to host
-network. This simplifies life if you are moving your laptop between different
-networks or have multiple network interfaces. YMMV.
+With `VirtualEthernet=yes` (default), the container gets its own network space,
+but it still inherits the host's DNS servers. If you switch networks and the
+DNS servers change, the container's DNS might break. However, restarting the
+container usually fixes this.
+
+On the other hand, with `VirtualEthernet=no`, the container shares the host's
+network. This makes it easier when you move your laptop between different
+networks. However, if you use a VPN inside the container, it might introduce
+its own DNS servers and domain suffixes, potentially leading to DNS issues.
+
+To use the latter, you need to modify the `mkosi.output/corphost.nspawn` file
+after running the `make` command.
 
 ## Smartcard
 
