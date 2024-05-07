@@ -22,7 +22,7 @@ useradd \
     --create-home \
     --home-dir "$_HOME" \
     --shell /bin/bash \
-    --groups sudo,video \
+    --groups adm,sudo,video \
     "$_USER"
 
 passwd "$_USER"
