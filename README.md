@@ -90,3 +90,10 @@ PCSCD_ARGS='--disable-polkit'
 ```
 
 Don't forget to restart `pcscd.service`.
+
+## NVIDIA
+
+If you have NVIDIA GPU and things don't work on Xorg,
+then you have to install NVIDIA drivers **inside of container**.
+Something like `./nvidia-installer -e --no-kernel-modules`
+should do the trick.
