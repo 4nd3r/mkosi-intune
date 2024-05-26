@@ -70,6 +70,12 @@ its own DNS servers and domain suffixes, potentially leading to DNS issues.
 To use the latter, you need to modify the `mkosi.output/corphost.nspawn` file
 after running the `make` command.
 
+### systemd v256 or newer
+
+Since v256, `IPForward=` is deprecated and replaced with the per-link settings.
+
+See https://github.com/systemd/systemd/issues/33004#issuecomment-2131387501 for details.
+
 ## Smartcard
 
 Close Edge and...
