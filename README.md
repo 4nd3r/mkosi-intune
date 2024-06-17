@@ -18,7 +18,7 @@ WARNING: This may not be the compliant way of doing things.
 
 ## Dependencies
 
-[`mkosi` v22](https://github.com/systemd/mkosi/tree/v22) and
+[`mkosi` v23.1](https://github.com/systemd/mkosi/tree/v23.1) and
 `apt`,
 `bubblewrap`,
 `pcscd`,
