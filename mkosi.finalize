@@ -2,7 +2,7 @@
 
 cat > "$OUTPUTDIR/$IMAGE_ID.service" << EOF
 [Service]
-ExecStartPost=-/usr/bin/find /dev -maxdepth 1 -name 'video*' -exec machinectl bind $IMAGE_ID {} --mkdir \;
+ExecStartPost=-/usr/bin/find /dev -maxdepth 1 -regex '/dev/\(hidraw\|video\)[0-9]+' -exec machinectl bind $IMAGE_ID {} --mkdir \;
 Restart=on-failure
 RestartSec=3
 DevicePolicy=auto
