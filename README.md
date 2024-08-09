@@ -18,7 +18,7 @@ WARNING: This may not be the compliant way of doing things.
 
 ## Dependencies
 
-[`mkosi` v23.1](https://github.com/systemd/mkosi/tree/v23.1) and
+[`mkosi` v24.3](https://github.com/systemd/mkosi/tree/v24.3),
 `apt`,
 `bubblewrap`,
 `pcscd`,
@@ -28,8 +28,8 @@ WARNING: This may not be the compliant way of doing things.
 `ubuntu-keyring`,
 `uidmap`,
 `xorg`,
-`zstd`,
-...
+`zstd`
+and something else that slipped my mind.
 
 ## Build & Install
 
