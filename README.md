@@ -85,7 +85,7 @@ certutil -d sql:$HOME/.pki/nssdb -A -t CT,c,c -n YourCorporateCA -i YourCorporat
 **NB!** `pcscd` [2.0.1](https://github.com/LudovicRousseau/PCSC/blob/2.0.1/ChangeLog)
 enabled polkit by default, which breaks reading smartcard in container for regular user.
 
-Workaround is to edit `/etc/default/pcscd`:
+Workaround is to edit `/etc/default/pcscd` in host:
 ```
 PCSCD_ARGS='--disable-polkit'
 ```
