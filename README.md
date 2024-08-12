@@ -51,6 +51,12 @@ complete, you can use `microsoft-edge` to take deep dive into corporate
 resources. Make sure that the Edge profile status shows "*Sync is on*" before
 proceeding, as things may not work properly otherwise.
 
+When authenticating for the first time in `intune-portal` and an unknown error
+occurs with hints about the *default keyring* in `journalctl --user`, restart
+the container. There appears to be an issue with keyring initialization during
+the first login. Occasionally, *Gnome Keyring* and *Identity Broker* do not
+interact correctly immediately, necessitating a session restart.
+
 ## Networking
 
 With `VirtualEthernet=yes` (default), the container gets its own network space,
