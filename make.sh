@@ -30,12 +30,7 @@ _nspawn()
         "Bind=$_HOME/Desktop" \
         "Bind=$_HOME/Downloads" \
         "Bind=$_HOME/Repos" \
-        "BindReadOnly=$_HOME/.bashrc" \
-        "BindReadOnly=$_HOME/.local/bin" \
-        "BindReadOnly=$_HOME/.profile" \
         "BindReadOnly=$_HOME/.tmux.conf" \
-        "BindReadOnly=$_HOME/.vim" \
-        "BindReadOnly=$_HOME/.vimrc" \
         "BindReadOnly=$_HOME/Documents" \
         'BindReadOnly=/run/pcscd/pcscd.comm' \
         "BindReadOnly=/run/user/$_UID/pipewire-0:/run/host-pipewire" \
