@@ -27,6 +27,7 @@ _nspawn()
 
     for _ in \
         'Bind=/dev/dri' \
+        "Bind=$_HOME/.kube" \
         "Bind=$_HOME/Desktop" \
         "Bind=$_HOME/Downloads" \
         "Bind=$_HOME/Repos" \
