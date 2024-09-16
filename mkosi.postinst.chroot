@@ -8,8 +8,6 @@ then
     groupadd --gid "$_GID" "$_GROUP"
 fi
 
-mkdir /etc/skel/.config /etc/skel/.local
-
 useradd \
     --uid "$_UID" \
     --gid "$_GID" \
